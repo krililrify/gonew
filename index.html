@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新华云最新地址发布页</title>
+<link rel="shortcut icon" href="/favicon.ico" />
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Poppins",sans-serif;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  color:#fff;
+  min-height:100svh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:30px;
+}
+
+.container{
+  width:1200px;
+  max-width:95%;
+  display:flex;
+  gap:30px;
+  align-items:stretch;
+}
+
+.glass{
+  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.08);
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 0 30px rgba(0,255,255,0.15);
+}
+
+.left{flex:2;display:flex;flex-direction:column}
+.right{flex:1}
+
+h1{
+  font-size:30px;
+  margin-bottom:8px;
+  text-shadow:0 0 15px #00ffff;
+}
+
+.section-title{
+  font-size:16px;
+  color:#ffeb3b;
+  margin:20px 0 12px 0;
+  font-weight:bold;
+}
+
+.detect-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.recheck{
+  padding:8px 18px;
+  border-radius:8px;
+  border:none;
+  background:#ffeb3b;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.recheck:hover{background:#fff176;}
+
+.line-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.line-card{
+  padding:18px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.06);
+  cursor:pointer;
+  transition:0.3s;
+  border:1px solid transparent;
+}
+
+.line-card:hover{
+  border:1px solid #00ffff;
+  box-shadow:0 0 15px #00ffff;
+  transform:translateY(-3px);
+}
+
+.line-card.active{
+  border:1px solid #4caf50;
+  box-shadow:0 0 15px #4caf50;
+}
+
+.line-title{font-size:16px;font-weight:bold;}
+.line-status{margin-top:6px;font-size:14px;color:#ccc;}
+.success{color:#4caf50}
+.fail{color:#f44336}
+.pending{color:#888}
+
+.note{
+  margin-top:auto;
+  text-align:center;
+  font-size:16px;
+  line-height:1.8;
+  color:#ffeb3b;
+  padding-top:25px;
+}
+
+.btn{
+  display:block;
+  width:100%;
+  padding:12px;
+  margin-bottom:10px;
+  border-radius:10px;
+  text-align:center;
+  font-weight:bold;
+  text-decoration:none;
+  background:rgba(255,255,255,0.1);
+  transition:0.3s;
+  color:#00ffff;
+}
+
+.btn:hover{
+  background:#00ffff;
+  color:#000;
+  box-shadow:0 0 15px #00ffff;
+}
+
+.domain-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.verify-box{
+  text-align:center;
+}
+
+.verify-box input{
+  padding:8px;
+  width:80px;
+  border-radius:6px;
+  border:none;
+}
+
+.verify-box button{
+  padding:8px 16px;
+  border:none;
+  border-radius:6px;
+  background:#ffeb3b;
+  cursor:pointer;
+  margin-left:10px;
+}
+
+/* ===== 弹窗遮罩 ===== */
+#noticeOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.75);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  padding:20px;
+}
+
+/* ===== 弹窗主体 ===== */
+#noticeBox{
+  background:linear-gradient(135deg,#1a1a2e,#16213e);
+  border:1px solid rgba(0,255,255,0.4);
+  box-shadow:0 0 40px rgba(0,255,255,0.2);
+  border-radius:20px;
+  padding:36px 32px;
+  max-width:480px;
+  width:100%;
+  text-align:center;
+}
+
+#noticeBox .notice-icon{
+  font-size:48px;
+  margin-bottom:16px;
+}
+
+#noticeBox .notice-title{
+  font-size:20px;
+  font-weight:bold;
+  color:#ffeb3b;
+  margin-bottom:20px;
+  line-height:1.6;
+}
+
+#noticeBox .notice-line{
+  font-size:16px;
+  color:#fff;
+  line-height:2;
+  margin-bottom:8px;
+}
+
+#noticeBox .notice-line span{
+  color:#00ffff;
+  font-weight:bold;
+}
+
+#noticeBox .notice-divider{
+  border:none;
+  border-top:1px solid rgba(255,255,255,0.15);
+  margin:24px 0;
+}
+
+#confirmBtn{
+  display:inline-block;
+  padding:12px 36px;
+  border-radius:10px;
+  border:none;
+  font-size:16px;
+  font-weight:bold;
+  cursor:not-allowed;
+  background:rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.4);
+  transition:0.3s;
+  user-select:none;
+}
+
+#confirmBtn.unlocked{
+  background:#ffeb3b;
+  color:#000;
+  cursor:pointer;
+}
+
+#confirmBtn.unlocked:hover{
+  background:#fff176;
+  box-shadow:0 0 15px rgba(255,235,59,0.5);
+}
+
+#countdownTip{
+  font-size:13px;
+  color:#888;
+  margin-top:10px;
+  height:18px;
+}
+
+/* ===== 移动端 ===== */
+@media (max-width:768px){
+  body{padding:15px;align-items:flex-start;}
+  .container{flex-direction:column;gap:20px;}
+  .left,.right{width:100%;}
+  .line-grid{grid-template-columns:1fr;}
+  .domain-grid{grid-template-columns:1fr;}
+  h1{font-size:22px;text-align:center;}
+  .note{font-size:14px;}
+  .glass{padding:20px;}
+  #noticeBox{padding:28px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- 验证题 -->
+<div class="verify-box" id="verifyBox">
+  <p>请完成验证：</p>
+  <p id="question"></p>
+  <input type="number" id="answer">
+  <button onclick="checkAnswer()">提交</button>
+</div>
+
+<!-- 无痕模式提示弹窗 -->
+<div id="noticeOverlay" style="display:none">
+  <div id="noticeBox">
+    <div class="notice-icon">🕵️</div>
+    <div class="notice-title">重要提示</div>
+    <div class="notice-line">请开启<span>无痕模式</span>访问此页面</div>
+    <div class="notice-line">请开启<span>无痕模式</span>访问此页面</div>
+    <div class="notice-line">请开启<span>无痕模式</span>访问此页面</div>
+    <div style="font-size:13px;color:#aaa;margin-top:8px;">重要的事情说三遍 ↑</div>
+    <hr class="notice-divider">
+
+    <!-- 勾选区域 -->
+    <label id="checkLabel" style="display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;font-size:15px;color:#ccc;margin-bottom:20px;user-select:none;">
+      <input type="checkbox" id="agreeCheck" onchange="onCheckChange()" style="width:18px;height:18px;cursor:pointer;accent-color:#ffeb3b;">
+      我已阅读，我已知晓
+    </label>
+
+    <button id="confirmBtn" onclick="confirmNotice()">确认</button>
+    <div id="countdownTip">请先勾选上方选项</div>
+  </div>
+</div>
+
+<!-- 主内容 -->
+<div class="container" id="mainContent" style="display:none">
+
+<div class="glass left">
+<div>
+<h1>新华云最新地址发布页</h1>
+
+<div class="detect-header">
+<span class="section-title">官网线路选择</span>
+<button class="recheck" onclick="startCheck()">重新检测</button>
+</div>
+
+<div class="line-grid" id="lineGrid"></div>
+</div>
+
+<div class="note">
+按顺序检测，可用后自动停止<br>
+别完全依赖自动检测哦～有时手动访问更快！<br>
+如果都进不去，用浏览器无痕模式打开这个页面再刷新就行啦。
+</div>
+</div>
+
+<div class="glass right">
+<div class="section-title">务必收藏</div>
+<a href="https://url.mimy.cc/newhua" target="_blank" class="btn">防失联发布页</a>
+<a href="https://t.me/newhua999" target="_blank" class="btn">频道订阅</a>
+<a href="https://t.me/newhua99" target="_blank" class="btn">官方群组</a>
+<a href="https://t.me/newhua" target="_blank" class="btn">商务合作</a>
+<a href="https://ios.mimy.cc" target="_blank" class="btn">福利商店</a>
+<a href="https://help.xhyjs.de/" target="_blank" class="btn">帮助文档</a>
+
+<div class="section-title">国内永久跳转</div>
+<div class="domain-grid">
+<a href="https://xhyjs.app" target="_blank" class="btn">xhyjs.app</a>
+<a href="https://xhyjs.cc" target="_blank" class="btn">xhyjs.cc</a>
+<a href="https://xhyjs.de" target="_blank" class="btn">xhyjs.de</a>
+<a href="https://xhyjs.net" target="_blank" class="btn">xhyjs.net</a>
+<a href="https://xhyjs.org" target="_blank" class="btn">xhyjs.org</a>
+<a href="https://xhyjs.uk" target="_blank" class="btn">xhyjs.uk</a>
+</div>
+
+<div class="section-title">快捷跳转页</div>
+<a href="https://url.mimy.cc/newhua" target="_blank" class="btn">url.mimy.cc/newhua</a>
+
+<div class="section-title">国外永久网址</div>
+<a href="https://newhua99.com" target="_blank" class="btn">newhua99.com</a>
+
+<div class="section-title">发送邮件至获取最新地址</div>
+<a href="mailto:newhua99@gmail.com" class="btn">newhua99@gmail.com</a>
+</div>
+
+</div>
+
+<script>
+const urls=[
+"https://nnnnhhiauwuhfdyhh11.7788991.xyz/",
+"https://nnuyyfggfdhfhgfhjgytyggffgf22.7897891.xyz/",
+"https://newetyhbgolifhfgaerrbffr333.2012102.xyz/",
+"https://nsudgayugdjkjdajhfdds4.7897891.xyz/",
+"https://nnnggasdsffdfdhg5.8080805.xyz/",
+"https://nkjdkhkasfsdds66.2012102.xyz/",
+"https://nghttty77.2012102.xyz/",
+"https://ngfyuhfgf88.7897891.xyz/",
+"https://nhjguutg99.2012102.xyz/",
+"https://nkjujkhddfh1010.7788991.xyz/",
+"https://njdshuifhekddesdsfds11.6816868.xyz/",
+"https://nkjduhwedxdspsdo12.6816868.xyz/",
+"https://nkjajhuikckhwojpieuif13.6816868.xyz/",
+"http://154.88.64.193:45667/"
+];
+
+const grid=document.getElementById("lineGrid");
+urls.forEach((url,i)=>{
+  const card=document.createElement("div");
+  card.className="line-card";
+  card.innerHTML=`
+    <div class="line-title">官网线路${i+1}</div>
+    <div class="line-status pending">未检测</div>
+  `;
+  card.onclick=()=>window.open(url,"_blank");
+  grid.appendChild(card);
+});
+
+async function startCheck(){
+  const cards=document.querySelectorAll(".line-card");
+  for(let c of cards){
+    c.classList.remove("active");
+    c.querySelector(".line-status").textContent="检测中...";
+    c.querySelector(".line-status").className="line-status pending";
+  }
+  for(let i=0;i<urls.length;i++){
+    const card=cards[i];
+    const status=card.querySelector(".line-status");
+    try{
+      const controller=new AbortController();
+      const timeout=setTimeout(()=>controller.abort(),6000);
+      await fetch(urls[i],{method:"HEAD",mode:"no-cors",signal:controller.signal});
+      clearTimeout(timeout);
+      status.textContent="✅ 可访问";
+      status.className="line-status success";
+      card.classList.add("active");
+      break;
+    }catch{
+      status.textContent="❌ 无法访问";
+      status.className="line-status fail";
+    }
+  }
+}
+
+/* ===== 验证逻辑 ===== */
+let n1,n2;
+function generateQuestion(){
+  do{
+    n1=Math.floor(Math.random()*30)+15;
+    n2=Math.floor(Math.random()*20)+5;
+  }while(n1+n2>60);
+  document.getElementById("question").textContent=`${n1}+${n2}=?`;
+}
+generateQuestion();
+
+function checkAnswer(){
+  if(parseInt(document.getElementById("answer").value)===n1+n2){
+    document.getElementById("verifyBox").style.display="none";
+    showNotice();
+  }else{
+    alert("答案错误");
+    generateQuestion();
+  }
+}
+
+/* ===== 弹窗逻辑 ===== */
+function showNotice(){
+  document.getElementById("noticeOverlay").style.display="flex";
+}
+
+function onCheckChange(){
+  const checked=document.getElementById("agreeCheck").checked;
+  const btn=document.getElementById("confirmBtn");
+  const tip=document.getElementById("countdownTip");
+
+  if(!checked){
+    btn.classList.remove("unlocked");
+    tip.textContent="请先勾选上方选项";
+    return;
+  }
+
+  // 勾选后禁用复选框防止重复触发，开始倒计时
+  document.getElementById("agreeCheck").disabled=true;
+  let count=3;
+  tip.innerHTML=`请等待 <span id="countNum">${count}</span> 秒后确认...`;
+
+  const timer=setInterval(()=>{
+    count--;
+    const el=document.getElementById("countNum");
+    if(count<=0){
+      clearInterval(timer);
+      btn.classList.add("unlocked");
+      tip.textContent="现在可以点击确认啦 ✅";
+    }else{
+      if(el) el.textContent=count;
+    }
+  },1000);
+}
+
+function confirmNotice(){
+  const btn=document.getElementById("confirmBtn");
+  if(!btn.classList.contains("unlocked")) return;
+  document.getElementById("noticeOverlay").style.display="none";
+  document.getElementById("mainContent").style.display="flex";
+  setTimeout(startCheck,200);
+}
+</script>
+
+</body>
+</html>
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="bac83da9-488b-4c0c-956b-4059891eb205";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
