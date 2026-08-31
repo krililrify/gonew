@@ -174,41 +174,106 @@ h1{
   border:1px solid rgba(0,255,255,0.4);
   box-shadow:0 0 40px rgba(0,255,255,0.2);
   border-radius:20px;
-  padding:36px 32px;
-  max-width:480px;
+  padding:28px 24px;
+  max-width:540px;
   width:100%;
+  max-height:90vh;
+  overflow-y:auto;
+  text-align:left;
+}
+
+#noticeBox .notice-header{
   text-align:center;
+  margin-bottom:16px;
 }
 
 #noticeBox .notice-icon{
-  font-size:48px;
-  margin-bottom:16px;
+  font-size:42px;
+  margin-bottom:8px;
 }
 
 #noticeBox .notice-title{
   font-size:20px;
   font-weight:bold;
   color:#ffeb3b;
-  margin-bottom:20px;
+  line-height:1.4;
+}
+
+#noticeBox .notice-content{
+  font-size:14px;
+  color:#e0e0e0;
   line-height:1.6;
 }
 
-#noticeBox .notice-line{
-  font-size:16px;
+#noticeBox .notice-intro{
+  margin-bottom:14px;
   color:#fff;
-  line-height:2;
+  background:rgba(255,255,255,0.05);
+  padding:10px 12px;
+  border-radius:8px;
+  border-left:3px solid #ffeb3b;
+}
+
+#noticeBox .notice-steps{
+  background:rgba(0,255,255,0.05);
+  border:1px dashed rgba(0,255,255,0.2);
+  border-radius:10px;
+  padding:12px;
+  margin-bottom:14px;
+}
+
+#noticeBox .notice-steps-title{
+  font-weight:bold;
+  color:#00ffff;
   margin-bottom:8px;
 }
 
-#noticeBox .notice-line span{
-  color:#00ffff;
+#noticeBox .notice-steps p{
+  margin-bottom:4px;
+}
+
+#noticeBox .option-box{
+  background:rgba(255,255,255,0.06);
+  padding:8px 12px;
+  border-radius:6px;
+  margin-top:6px;
+  font-size:13px;
+}
+
+#noticeBox .option-box span{
+  color:#ffeb3b;
   font-weight:bold;
+}
+
+#noticeBox .notice-warning{
+  background:rgba(244,67,54,0.1);
+  border-left:3px solid #f44336;
+  padding:10px 12px;
+  border-radius:8px;
+  font-size:13px;
+  color:#ddd;
+}
+
+#noticeBox .notice-warning strong{
+  color:#f44336;
+}
+
+#noticeBox .notice-warning p{
+  margin-bottom:6px;
+}
+
+#noticeBox .notice-warning p:last-child{
+  margin-bottom:0;
 }
 
 #noticeBox .notice-divider{
   border:none;
   border-top:1px solid rgba(255,255,255,0.15);
-  margin:24px 0;
+  margin:20px 0;
+}
+
+#noticeBox .notice-footer{
+  text-align:center;
 }
 
 #confirmBtn{
@@ -253,7 +318,8 @@ h1{
   h1{font-size:22px;text-align:center;}
   .note{font-size:14px;}
   .glass{padding:20px;}
-  #noticeBox{padding:28px 20px;}
+  #noticeBox{padding:20px 16px;}
+  #noticeBox .notice-title{font-size:18px;}
 }
 </style>
 </head>
@@ -267,25 +333,54 @@ h1{
   <button onclick="checkAnswer()">提交</button>
 </div>
 
-<!-- 无痕模式提示弹窗 -->
+<!-- 老站用户迁移通知弹窗 -->
 <div id="noticeOverlay" style="display:none">
   <div id="noticeBox">
-    <div class="notice-icon">🕵️</div>
-    <div class="notice-title">重要提示</div>
-    <div class="notice-line">请开启<span>无痕模式</span>访问此页面</div>
-    <div class="notice-line">请开启<span>无痕模式</span>访问此页面</div>
-    <div class="notice-line">请开启<span>无痕模式</span>访问此页面</div>
-    <div style="font-size:13px;color:#aaa;margin-top:8px;">重要的事情说三遍 ↑</div>
+    <div class="notice-header">
+      <div class="notice-icon">🚨</div>
+      <div class="notice-title">⚠️ 老站用户迁移通知</div>
+    </div>
+
+    <div class="notice-content">
+      <div class="notice-intro">
+        近期由于部分线路受到 GFW 影响，老站部分节点已无法正常使用。为保障后续使用稳定性，我们已开放用户迁移至新站的方案。
+      </div>
+
+      <div class="notice-steps">
+        <div class="notice-steps-title">如果你目前使用的是老站，请按以下方式申请迁移：</div>
+        <p>① 登录老站 → 进入【我的工单】→【新的工单】</p>
+        <p>② 工单等级选择：<strong>高</strong></p>
+        <p>③ 工单主题填写：<strong>迁移</strong></p>
+        <p>④ 工单内容仅填写：<strong>A</strong> 或 <strong>B</strong>（二选一）</p>
+        <div class="option-box">
+          <p><span>A：</span> 额外赠送 100GB 流量</p>
+          <p><span>B：</span> 原订单额外延长 7 天</p>
+        </div>
+      </div>
+
+      <div class="notice-warning">
+        <p><strong>❗ 请注意：</strong></p>
+        <p>• 提交迁移工单后，无需重复提交工单，也无需通过其他方式反复联系客服或说明情况。</p>
+        <p>• 目前迁移用户较多，客服及技术人员正在集中处理迁移申请，我们会按照工单顺序逐一处理。</p>
+        <p>• 迁移完成后，我们会直接在工单中回复，并告知你后续的使用方式及相关方案，请注意查看工单回复。</p>
+        <p>• 正常情况下工单会及时处理，如果提交工单超过 24 小时仍未收到任何回复，再联系客服协助处理即可。</p>
+      </div>
+
+      <p style="text-align:center;margin-top:12px;font-size:13px;color:#aaa;">感谢理解与耐心等待。</p>
+    </div>
+
     <hr class="notice-divider">
 
-    <!-- 勾选区域 -->
-    <label id="checkLabel" style="display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;font-size:15px;color:#ccc;margin-bottom:20px;user-select:none;">
-      <input type="checkbox" id="agreeCheck" onchange="onCheckChange()" style="width:18px;height:18px;cursor:pointer;accent-color:#ffeb3b;">
-      我已阅读，我已知晓
-    </label>
+    <div class="notice-footer">
+      <!-- 勾选区域 -->
+      <label id="checkLabel" style="display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;font-size:15px;color:#ccc;margin-bottom:20px;user-select:none;">
+        <input type="checkbox" id="agreeCheck" onchange="onCheckChange()" style="width:18px;height:18px;cursor:pointer;accent-color:#ffeb3b;">
+        我已阅读，我已知晓
+      </label>
 
-    <button id="confirmBtn" onclick="confirmNotice()">确认</button>
-    <div id="countdownTip">请先勾选上方选项</div>
+      <button id="confirmBtn" onclick="confirmNotice()">确认</button>
+      <div id="countdownTip">请先勾选上方选项</div>
+    </div>
   </div>
 </div>
 
