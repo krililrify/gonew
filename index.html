@@ -136,24 +136,58 @@ h1{
   gap:10px;
 }
 
+/* ===== 颜色验证盒子样式 ===== */
 .verify-box{
   text-align:center;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(0,255,255,0.3);
+  box-shadow:0 0 30px rgba(0,255,255,0.15);
+  padding:35px 25px;
+  border-radius:20px;
+  max-width:420px;
+  width:90%;
 }
 
-.verify-box input{
-  padding:8px;
-  width:80px;
-  border-radius:6px;
-  border:none;
+.verify-box .verify-sub{
+  font-size:14px;
+  color:#aaa;
+  margin-bottom:10px;
+  letter-spacing:1px;
 }
 
-.verify-box button{
-  padding:8px 16px;
-  border:none;
-  border-radius:6px;
-  background:#ffeb3b;
+.verify-box .question-text{
+  font-size:20px;
+  font-weight:bold;
+  color:#ffeb3b;
+  margin-bottom:25px;
+  line-height:1.4;
+  text-shadow:0 0 10px rgba(255,235,59,0.3);
+}
+
+.color-options-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  margin-top:10px;
+}
+
+.color-btn{
+  height:70px;
+  border-radius:14px;
   cursor:pointer;
-  margin-left:10px;
+  transition:all 0.25s ease;
+  border:2px solid rgba(255,255,255,0.2);
+  outline:none;
+}
+
+.color-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px rgba(255,255,255,0.6);
+}
+
+.color-btn:active{
+  transform:scale(0.95);
 }
 
 /* ===== 弹窗遮罩 ===== */
@@ -320,17 +354,17 @@ h1{
   .glass{padding:20px;}
   #noticeBox{padding:20px 16px;}
   #noticeBox .notice-title{font-size:18px;}
+  .color-btn{height:60px;}
 }
 </style>
 </head>
 <body>
 
-<!-- 验证题 -->
+<!-- 颜色常识验证题 -->
 <div class="verify-box" id="verifyBox">
-  <p>请完成验证：</p>
-  <p id="question"></p>
-  <input type="number" id="answer">
-  <button onclick="checkAnswer()">提交</button>
+  <div class="verify-sub">请完成人机验证</div>
+  <div class="question-text" id="question">加载中...</div>
+  <div class="color-options-grid" id="colorGrid"></div>
 </div>
 
 <!-- 老站用户迁移通知弹窗 -->
@@ -493,26 +527,81 @@ async function startCheck(){
   }
 }
 
-/* ===== 验证逻辑 ===== */
-let n1,n2;
-function generateQuestion(){
-  do{
-    n1=Math.floor(Math.random()*30)+15;
-    n2=Math.floor(Math.random()*20)+5;
-  }while(n1+n2>60);
-  document.getElementById("question").textContent=`${n1}+${n2}=?`;
-}
-generateQuestion();
+/* ===== 颜色验证逻辑 ===== */
+const colorMap = {
+  "红色": "#ff4d4f",
+  "黄色": "#ffec3d",
+  "绿色": "#52c41a",
+  "蓝色": "#1890ff",
+  "白色": "#ffffff",
+  "黑色": "#141414",
+  "橙色": "#ff7a45"
+};
 
-function checkAnswer(){
-  if(parseInt(document.getElementById("answer").value)===n1+n2){
-    document.getElementById("verifyBox").style.display="none";
+const questionBank = [
+  { q: "🍅 西红柿通常是什么颜色？", a: "红色" },
+  { q: "🍌 香蕉通常是什么颜色？", a: "黄色" },
+  { q: "🌱 新鲜的草通常是什么颜色？", a: "绿色" },
+  { q: "☁️ 晴朗的天空通常是什么颜色？", a: "蓝色" },
+  { q: "🥛 牛奶通常是什么颜色？", a: "白色" },
+  { q: "🐦‍⬛ 乌鸦通常是什么颜色？", a: "黑色" },
+  { q: "🥕 胡萝卜通常是什么颜色？", a: "橙色" },
+  { q: "🍓 草莓通常是什么颜色？", a: "红色" },
+  { q: "🫐 蓝莓通常是什么颜色？", a: "蓝色" },
+  { q: "🥦 西兰花通常是什么颜色？", a: "绿色" },
+  { q: "🍊 橙子通常是什么颜色？", a: "橙色" },
+  { q: "🍉 西瓜果肉通常是什么颜色？", a: "红色" },
+  { q: "🥬 青菜通常是什么颜色？", a: "绿色" },
+  { q: "🧅 洋葱通常是什么颜色？", a: "白色" },
+  { q: "🌹 红玫瑰通常是什么颜色？", a: "红色" },
+  { q: "☁️ 云朵通常是什么颜色？", a: "白色" },
+  { q: "🖤 煤炭通常是什么颜色？", a: "黑色" },
+  { q: "🚦 交通信号灯表示“停止”的灯通常是什么颜色？", a: "红色" },
+  { q: "🚦 交通信号灯表示“通行”的灯通常是什么颜色？", a: "绿色" },
+  { q: "🚦 交通信号灯表示“注意”的灯通常是什么颜色？", a: "黄色" }
+];
+
+let currentCorrectColor = "";
+
+function generateQuestion(){
+  const randomItem = questionBank[Math.floor(Math.random() * questionBank.length)];
+  currentCorrectColor = randomItem.a;
+  document.getElementById("question").textContent = randomItem.q;
+
+  const allColors = Object.keys(colorMap);
+  const wrongColors = allColors.filter(c => c !== currentCorrectColor);
+
+  // 随机取3个错误颜色
+  wrongColors.sort(() => Math.random() - 0.5);
+  const selectedColors = [currentCorrectColor, wrongColors[0], wrongColors[1], wrongColors[2]];
+
+  // 打乱4个选项
+  selectedColors.sort(() => Math.random() - 0.5);
+
+  const colorGrid = document.getElementById("colorGrid");
+  colorGrid.innerHTML = "";
+
+  selectedColors.forEach(colorName => {
+    const btn = document.createElement("button");
+    btn.className = "color-btn";
+    btn.style.backgroundColor = colorMap[colorName];
+    btn.onclick = () => checkAnswer(colorName);
+    colorGrid.appendChild(btn);
+  });
+}
+
+function checkAnswer(selectedColor){
+  if(selectedColor === currentCorrectColor){
+    document.getElementById("verifyBox").style.display = "none";
     showNotice();
   }else{
-    alert("答案错误");
+    alert("回答错误，请重新选择");
     generateQuestion();
   }
 }
+
+// 初始化生成第一道验证题
+generateQuestion();
 
 /* ===== 弹窗逻辑 ===== */
 function showNotice(){
