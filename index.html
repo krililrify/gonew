@@ -1,651 +1,969 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>新华云最新地址发布页</title>
-<link rel="shortcut icon" href="/favicon.ico" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>新华云｜官方最新地址发布页</title>
+  <meta name="description" content="新华云官方最新地址发布页及站点迁移指引。">
+  <link rel="shortcut icon" href="/favicon.ico" />
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:"Poppins",sans-serif;
-  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-  color:#fff;
-  min-height:100svh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:30px;
-}
+  <style>
+    /* ==========================================
+       基础样式与主题变量
+       ========================================== */
+    :root {
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --accent-orange: #ea580c;
+      --accent-orange-light: #fff7ed;
+      --accent-green: #059669;
+      --accent-green-light: #ecfdf5;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.08);
+      --radius: 16px;
+    }
 
-.container{
-  width:1200px;
-  max-width:95%;
-  display:flex;
-  gap:30px;
-  align-items:stretch;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.glass{
-  backdrop-filter:blur(20px);
-  background:rgba(255,255,255,0.08);
-  border-radius:20px;
-  padding:30px;
-  box-shadow:0 0 30px rgba(0,255,255,0.15);
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.left{flex:2;display:flex;flex-direction:column}
-.right{flex:1}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-h1{
-  font-size:30px;
-  margin-bottom:8px;
-  text-shadow:0 0 15px #00ffff;
-}
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
 
-.section-title{
-  font-size:16px;
-  color:#ffeb3b;
-  margin:20px 0 12px 0;
-  font-weight:bold;
-}
+    /* Header */
+    .header {
+      padding: 28px 0 12px;
+      text-align: center;
+    }
 
-.detect-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:15px;
-}
+    .brand {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      display: inline-block;
+    }
 
-.recheck{
-  padding:8px 18px;
-  border-radius:8px;
-  border:none;
-  background:#ffeb3b;
-  cursor:pointer;
-  font-weight:bold;
-}
+    .brand-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 500;
+    }
 
-.recheck:hover{background:#fff176;}
+    /* ==========================================
+       第一屏：决策卡片（柔和专业文案）
+       ========================================== */
+    .hero-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      text-align: center;
+      margin: 20px 0 30px;
+      box-shadow: var(--shadow-md);
+    }
 
-.line-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-}
+    .notice-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background: #fef3c7;
+      color: #b45309;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      border: 1px solid #fde68a;
+    }
 
-.line-card{
-  padding:18px;
-  border-radius:14px;
-  background:rgba(255,255,255,0.06);
-  cursor:pointer;
-  transition:0.3s;
-  border:1px solid transparent;
-}
+    .hero-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
 
-.line-card:hover{
-  border:1px solid #00ffff;
-  box-shadow:0 0 15px #00ffff;
-  transform:translateY(-3px);
-}
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
 
-.line-card.active{
-  border:1px solid #4caf50;
-  box-shadow:0 0 15px #4caf50;
-}
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
 
-.line-title{font-size:16px;font-weight:bold;}
-.line-status{margin-top:6px;font-size:14px;color:#ccc;}
-.success{color:#4caf50}
-.fail{color:#f44336}
-.pending{color:#888}
+    .choice-btn {
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      border-radius: 14px;
+      padding: 22px 16px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      outline: none;
+    }
 
-.note{
-  margin-top:auto;
-  text-align:center;
-  font-size:16px;
-  line-height:1.8;
-  color:#ffeb3b;
-  padding-top:25px;
-}
+    .choice-btn .btn-tag {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 6px;
+    }
 
-.btn{
-  display:block;
-  width:100%;
-  padding:12px;
-  margin-bottom:10px;
-  border-radius:10px;
-  text-align:center;
-  font-weight:bold;
-  text-decoration:none;
-  background:rgba(255,255,255,0.1);
-  transition:0.3s;
-  color:#00ffff;
-}
+    .choice-btn .btn-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
 
-.btn:hover{
-  background:#00ffff;
-  color:#000;
-  box-shadow:0 0 15px #00ffff;
-}
+    /* 尚未迁移 */
+    .choice-btn.unmigrated {
+      border-color: #fed7aa;
+      background: #fff8f6;
+    }
+    .choice-btn.unmigrated .btn-tag {
+      background: #ffedd5;
+      color: var(--accent-orange);
+    }
+    .choice-btn.unmigrated:hover,
+    .choice-btn.unmigrated.active {
+      border-color: var(--accent-orange);
+      background: var(--accent-orange-light);
+      box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15);
+      transform: translateY(-2px);
+    }
 
-.domain-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
+    /* 已经迁移 */
+    .choice-btn.migrated {
+      border-color: #a7f3d0;
+      background: #f6fbf9;
+    }
+    .choice-btn.migrated .btn-tag {
+      background: #d1fae5;
+      color: var(--accent-green);
+    }
+    .choice-btn.migrated:hover,
+    .choice-btn.migrated.active {
+      border-color: var(--accent-green);
+      background: var(--accent-green-light);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+      transform: translateY(-2px);
+    }
 
-/* ===== 颜色验证盒子样式 ===== */
-.verify-box{
-  text-align:center;
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(0,255,255,0.3);
-  box-shadow:0 0 30px rgba(0,255,255,0.15);
-  padding:35px 25px;
-  border-radius:20px;
-  max-width:420px;
-  width:90%;
-}
+    /* ==========================================
+       动态展现区域
+       ========================================== */
+    .dynamic-view {
+      display: none;
+      animation: fadeIn 0.35s ease-in-out;
+      margin-bottom: 50px;
+    }
 
-.verify-box .verify-sub{
-  font-size:14px;
-  color:#aaa;
-  margin-bottom:10px;
-  letter-spacing:1px;
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-.verify-box .question-text{
-  font-size:20px;
-  font-weight:bold;
-  color:#ffeb3b;
-  margin-bottom:25px;
-  line-height:1.4;
-  text-shadow:0 0 10px rgba(255,235,59,0.3);
-}
+    .content-panel {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 32px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
 
-.color-options-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:16px;
-  margin-top:10px;
-}
+    .panel-header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
 
-.color-btn{
-  height:70px;
-  border-radius:14px;
-  cursor:pointer;
-  transition:all 0.25s ease;
-  border:2px solid rgba(255,255,255,0.2);
-  outline:none;
-}
+    .panel-title {
+      font-size: 22px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-.color-btn:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 20px rgba(255,255,255,0.6);
-}
+    /* ==========================================
+       【未迁移视图】优化样式
+       ========================================== */
+    .action-focus-box {
+      background: #fff7ed;
+      border: 2px dashed #f97316;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 28px;
+    }
 
-.color-btn:active{
-  transform:scale(0.95);
-}
+    .action-focus-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #c2410c;
+      margin-bottom: 12px;
+    }
 
-/* ===== 弹窗遮罩 ===== */
-#noticeOverlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.75);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  padding:20px;
-}
+    .btn-old-site-main {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 36px;
+      background: var(--accent-orange);
+      color: #fff;
+      font-weight: 800;
+      font-size: 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
+      transition: all 0.2s ease;
+    }
 
-/* ===== 弹窗主体 ===== */
-#noticeBox{
-  background:linear-gradient(135deg,#1a1a2e,#16213e);
-  border:1px solid rgba(0,255,255,0.4);
-  box-shadow:0 0 40px rgba(0,255,255,0.2);
-  border-radius:20px;
-  padding:28px 24px;
-  max-width:540px;
-  width:100%;
-  max-height:90vh;
-  overflow-y:auto;
-  text-align:left;
-}
+    .btn-old-site-main:hover {
+      background: #c2410c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(234, 88, 12, 0.4);
+    }
 
-#noticeBox .notice-header{
-  text-align:center;
-  margin-bottom:16px;
-}
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
 
-#noticeBox .notice-icon{
-  font-size:42px;
-  margin-bottom:8px;
-}
+    .step-item {
+      background: var(--bg-main);
+      padding: 16px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+    }
 
-#noticeBox .notice-title{
-  font-size:20px;
-  font-weight:bold;
-  color:#ffeb3b;
-  line-height:1.4;
-}
+    .step-num {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-orange);
+      margin-bottom: 4px;
+    }
 
-#noticeBox .notice-content{
-  font-size:14px;
-  color:#e0e0e0;
-  line-height:1.6;
-}
+    .step-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
 
-#noticeBox .notice-intro{
-  margin-bottom:14px;
-  color:#fff;
-  background:rgba(255,255,255,0.05);
-  padding:10px 12px;
-  border-radius:8px;
-  border-left:3px solid #ffeb3b;
-}
+    .step-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
 
-#noticeBox .notice-steps{
-  background:rgba(0,255,255,0.05);
-  border:1px dashed rgba(0,255,255,0.2);
-  border-radius:10px;
-  padding:12px;
-  margin-bottom:14px;
-}
+    /* 工单规范强强调区域 */
+    .ticket-warning-card {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 28px;
+    }
 
-#noticeBox .notice-steps-title{
-  font-weight:bold;
-  color:#00ffff;
-  margin-bottom:8px;
-}
+    .ticket-warning-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1e40af;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-#noticeBox .notice-steps p{
-  margin-bottom:4px;
-}
+    .ticket-choice-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: #fff;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px dashed #93c5fd;
+      margin: 10px 0 12px;
+    }
 
-#noticeBox .option-box{
-  background:rgba(255,255,255,0.06);
-  padding:8px 12px;
-  border-radius:6px;
-  margin-top:6px;
-  font-size:13px;
-}
+    .ticket-letter-box {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 26px;
+      font-weight: 900;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1px solid #93c5fd;
+    }
 
-#noticeBox .option-box span{
-  color:#ffeb3b;
-  font-weight:bold;
-}
+    .ticket-or {
+      font-weight: 700;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
 
-#noticeBox .notice-warning{
-  background:rgba(244,67,54,0.1);
-  border-left:3px solid #f44336;
-  padding:10px 12px;
-  border-radius:8px;
-  font-size:13px;
-  color:#ddd;
-}
+    .ticket-strict-tip {
+      color: #dc2626;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      background: #fef2f2;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #fee2e2;
+    }
 
-#noticeBox .notice-warning strong{
-  color:#f44336;
-}
+    /* 视觉化 A/B 补偿卡片 */
+    .compensation-wrapper {
+      margin-bottom: 28px;
+    }
 
-#noticeBox .notice-warning p{
-  margin-bottom:6px;
-}
+    .compensation-header-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
 
-#noticeBox .notice-warning p:last-child{
-  margin-bottom:0;
-}
+    .comp-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 10px;
+    }
 
-#noticeBox .notice-divider{
-  border:none;
-  border-top:1px solid rgba(255,255,255,0.15);
-  margin:20px 0;
-}
+    .comp-card {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+      position: relative;
+    }
 
-#noticeBox .notice-footer{
-  text-align:center;
-}
+    .comp-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--text-main);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-#confirmBtn{
-  display:inline-block;
-  padding:12px 36px;
-  border-radius:10px;
-  border:none;
-  font-size:16px;
-  font-weight:bold;
-  cursor:not-allowed;
-  background:rgba(255,255,255,0.15);
-  color:rgba(255,255,255,0.4);
-  transition:0.3s;
-  user-select:none;
-}
+    .comp-value {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--accent-orange);
+      margin: 4px 0;
+    }
 
-#confirmBtn.unlocked{
-  background:#ffeb3b;
-  color:#000;
-  cursor:pointer;
-}
+    .comp-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
 
-#confirmBtn.unlocked:hover{
-  background:#fff176;
-  box-shadow:0 0 15px rgba(255,235,59,0.5);
-}
+    .comp-foot-tip {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
 
-#countdownTip{
-  font-size:13px;
-  color:#888;
-  margin-top:10px;
-  height:18px;
-}
+    /* FAQ (默认常开样式) */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+    }
 
-/* ===== 移动端 ===== */
-@media (max-width:768px){
-  body{padding:15px;align-items:flex-start;}
-  .container{flex-direction:column;gap:20px;}
-  .left,.right{width:100%;}
-  .line-grid{grid-template-columns:1fr;}
-  .domain-grid{grid-template-columns:1fr;}
-  h1{font-size:22px;text-align:center;}
-  .note{font-size:14px;}
-  .glass{padding:20px;}
-  #noticeBox{padding:20px 16px;}
-  #noticeBox .notice-title{font-size:18px;}
-  .color-btn{height:60px;}
-}
-</style>
+    .faq-item {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+
+    .faq-question {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .faq-answer {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ==========================================
+       【已迁移视图】样式
+       ========================================== */
+    .migrated-notice-bar {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .main-portal-card {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      padding: 24px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .portal-info h3 { font-size: 20px; margin-bottom: 4px; }
+    .portal-info p { font-size: 13px; opacity: 0.9; }
+
+    .btn-main-site {
+      background: #fff;
+      color: var(--primary);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 15px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: box-shadow 0.2s;
+    }
+
+    .btn-main-site:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+
+    .line-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 6px;
+    }
+
+    .line-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .btn-recheck {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .line-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .line-card {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      padding: 14px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
+    }
+
+    .line-card:hover { border-color: var(--primary); }
+    .line-card.active { border-color: var(--accent-green); background: var(--accent-green-light); }
+
+    .line-name { font-weight: 600; font-size: 14px; }
+    .line-status { font-size: 12px; font-weight: 600; }
+    .status-pending { color: var(--text-muted); }
+    .status-success { color: var(--accent-green); }
+    .status-fail { color: #ef4444; }
+
+    .resource-sections {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .resource-group {
+      background: var(--bg-main);
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .resource-group-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .btn-list { display: flex; flex-direction: column; gap: 8px; }
+    .grid-2col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+    .btn-resource {
+      display: block;
+      padding: 9px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .btn-resource:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* 返回按钮组件 */
+    .back-nav {
+      text-align: center;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    .btn-back {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+
+    .btn-back:hover {
+      background: var(--border-color);
+      color: var(--text-main);
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .decision-grid, .steps-grid, .comp-cards-grid, .resource-sections, .line-grid {
+        grid-template-columns: 1fr;
+      }
+      .main-portal-card { flex-direction: column; text-align: center; gap: 16px; }
+      .btn-main-site { width: 100%; }
+      .hero-card { padding: 28px 16px; }
+      .content-panel { padding: 20px 16px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- 颜色常识验证题 -->
-<div class="verify-box" id="verifyBox">
-  <div class="verify-sub">请完成人机验证</div>
-  <div class="question-text" id="question">加载中...</div>
-  <div class="color-options-grid" id="colorGrid"></div>
-</div>
+  <!-- Header -->
+  <header class="header">
+    <a href="#" class="brand">新华云</a>
+    <div class="brand-sub">官方最新地址发布页</div>
+  </header>
 
-<!-- 老站用户迁移通知弹窗 -->
-<div id="noticeOverlay" style="display:none">
-  <div id="noticeBox">
-    <div class="notice-header">
-      <div class="notice-icon">🚨</div>
-      <div class="notice-title">⚠️ 老站用户迁移通知</div>
+  <main class="container">
+
+    <!-- 第一屏：柔和专业的决策卡片 -->
+    <div id="heroCard" class="hero-card">
+      <span class="notice-badge">⚠️ 重要通知</span>
+      <h1 class="hero-title">近期由于网络环境变化，新华云已进行站点迁移。</h1>
+      <p class="hero-subtitle">请问您是否已经完成迁移？</p>
+
+      <div class="decision-grid">
+        <!-- 选项 A：尚未迁移 -->
+        <button id="btnUnmigrated" class="choice-btn unmigrated" onclick="selectState('unmigrated')">
+          <span class="btn-tag">尚未迁移</span>
+          <span class="btn-text">🟠 我还没有办理迁移</span>
+        </button>
+
+        <!-- 选项 B：已经迁移 -->
+        <button id="btnMigrated" class="choice-btn migrated" onclick="selectState('migrated')">
+          <span class="btn-tag">已经迁移</span>
+          <span class="btn-text">🟢 我已经完成迁移</span>
+        </button>
+      </div>
     </div>
 
-    <div class="notice-content">
-      <div class="notice-intro">
-        近期由于部分线路受到 GFW 影响，老站部分节点已无法正常使用。为保障后续使用稳定性，我们已开放用户迁移至新站的方案。
-      </div>
 
-      <div class="notice-steps">
-        <div class="notice-steps-title">如果你目前使用的是老站，请按以下方式申请迁移：</div>
-        <p>① 登录老站 → 进入【我的工单】→【新的工单】</p>
-        <p>② 工单等级选择：<strong>高</strong></p>
-        <p>③ 工单主题填写：<strong>迁移</strong></p>
-        <p>④ 工单内容仅填写：<strong>A</strong> 或 <strong>B</strong>（二选一）</p>
-        <div class="option-box">
-          <p><span>A：</span> 额外赠送 100GB 流量</p>
-          <p><span>B：</span> 原订单额外延长 7 天</p>
+    <!-- ==========================================
+         视图一：【未迁移】专属指导
+         ========================================== -->
+    <div id="unmigratedView" class="dynamic-view">
+      <div class="content-panel">
+        <div class="panel-header">
+          <h2 class="panel-title" style="color: var(--accent-orange);">📋 迁移办理指引</h2>
+        </div>
+
+        <!-- 核心行动提示与醒目按钮 -->
+        <div class="action-focus-box">
+          <div class="action-focus-title">👉 您现在只需要前往老站提交一份迁移工单即可</div>
+          <a id="oldSiteBtn" href="#" target="_blank" class="btn-old-site-main">
+            前往老站办理迁移 →
+          </a>
+        </div>
+
+        <!-- 4 步辅助流程 -->
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-num">01</div>
+            <div class="step-title">前往老站</div>
+            <div class="step-desc">登录原老站账号</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">02</div>
+            <div class="step-title">新的工单</div>
+            <div class="step-desc">进入工单中心发帖</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">03</div>
+            <div class="step-title">填写申请</div>
+            <div class="step-desc">选择下方规范内容</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">04</div>
+            <div class="step-title">等待回复</div>
+            <div class="step-desc">技术集中办理</div>
+          </div>
+        </div>
+
+        <!-- 工单格式强提醒 -->
+        <div class="ticket-warning-card">
+          <div class="ticket-warning-title">
+            📌 工单填写要求（等级选择【高】，主题填写【迁移】）
+          </div>
+          <p style="font-size: 13px; color: var(--text-muted);">请在工单内容中仅填入您选择的补偿方案字母：</p>
+          
+          <div class="ticket-choice-container">
+            <div class="ticket-letter-box">A</div>
+            <span class="ticket-or">或</span>
+            <div class="ticket-letter-box">B</div>
+          </div>
+
+          <div class="ticket-strict-tip">
+            ⚠️ 只能二选一，请勿填写任何其他说明文字（例如“我要迁移选择A谢谢”等）
+          </div>
+        </div>
+
+        <!-- 视觉化 A/B 补偿方案 -->
+        <div class="compensation-wrapper">
+          <div class="compensation-header-title">🎁 迁移专属补偿方案：</div>
+          <div class="comp-cards-grid">
+            <div class="comp-card">
+              <div class="comp-badge">A</div>
+              <div class="comp-value">+100GB</div>
+              <div class="comp-desc">额外赠送流量</div>
+            </div>
+            <div class="comp-card">
+              <div class="comp-badge">B</div>
+              <div class="comp-value">+7天</div>
+              <div class="comp-desc">原订单有效期延长</div>
+            </div>
+          </div>
+          <div class="comp-foot-tip">二选一，请勿重复选择</div>
+        </div>
+
+        <!-- FAQ (自动展开) -->
+        <div style="margin-top: 32px;">
+          <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px;">❓ 迁移常见问题</h3>
+          <div class="faq-list">
+            <div class="faq-item">
+              <div class="faq-question">提交工单后需要做什么？</div>
+              <div class="faq-answer">提交后请耐心等待，无需重复提交工单，也无需在其他渠道联系客服。处理完成后客服会在工单中直接回复使用方法。</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">多长时间可以处理完成？</div>
+              <div class="faq-answer">客服及技术人员正在按提交顺序集中处理，正常情况下会及时回复。若提交超过 24 小时未收到回复可再联系协助。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 返回选择 -->
+        <div class="back-nav">
+          <button class="btn-back" onclick="selectState(null)">← 返回重新选择</button>
         </div>
       </div>
+    </div>
 
-      <div class="notice-warning">
-        <p><strong>❗ 请注意：</strong></p>
-        <p>• 提交迁移工单后，无需重复提交工单，也无需通过其他方式反复联系客服或说明情况。</p>
-        <p>• 目前迁移用户较多，客服及技术人员正在集中处理迁移申请，我们会按照工单顺序逐一处理。</p>
-        <p>• 迁移完成后，我们会直接在工单中回复，并告知你后续的使用方式及相关方案，请注意查看工单回复。</p>
-        <p>• 正常情况下工单会及时处理，如果提交工单超过 24 小时仍未收到任何回复，再联系客服协助处理即可。</p>
+
+    <!-- ==========================================
+         视图二：【已迁移】专属发布页
+         ========================================== -->
+    <div id="migratedView" class="dynamic-view">
+      <!-- 提示文案 -->
+      <div class="migrated-notice-bar">
+        ✅ 如果您已经完成迁移，请直接使用以下地址访问新版站点，无需再次提交迁移工单。
       </div>
 
-      <p style="text-align:center;margin-top:12px;font-size:13px;color:#aaa;">感谢理解与耐心等待。</p>
+      <!-- 官方主站卡片 -->
+      <div class="main-portal-card">
+        <div class="portal-info">
+          <h3>新华云 官方主站入口</h3>
+          <p>迁移完成的用户请直接进入主站管理节点</p>
+        </div>
+        <a id="newSiteBtn" href="#" target="_blank" class="btn-main-site">
+          进入官方站点 →
+        </a>
+      </div>
+
+      <div class="content-panel">
+        <!-- 官方最新地址 -->
+        <div class="line-header">
+          <span style="font-weight: 800; font-size: 17px;">官方最新地址</span>
+          <button class="btn-recheck" onclick="startCheck()">重新检测</button>
+        </div>
+        <div class="line-subtitle">系统正在检测可访问地址，请选择任意可用地址访问。</div>
+
+        <div class="line-grid" id="lineGrid"></div>
+
+        <!-- 资源导航列表 -->
+        <div class="resource-sections">
+          <!-- 务必收藏 -->
+          <div class="resource-group">
+            <div class="resource-group-title">务必收藏</div>
+            <div class="btn-list">
+              <a href="https://url.mimy.cc/newhua" target="_blank" class="btn-resource">防失联发布页</a>
+              <a href="https://t.me/newhua999" target="_blank" class="btn-resource">频道订阅 (Telegram)</a>
+              <a href="https://t.me/newhua99" target="_blank" class="btn-resource">官方群组 (Telegram)</a>
+              <a href="https://t.me/newhua" target="_blank" class="btn-resource">商务合作</a>
+              <a href="https://ios.mimy.cc" target="_blank" class="btn-resource">福利商店</a>
+              <a href="https://help.xhyjs.de/" target="_blank" class="btn-resource">帮助文档</a>
+            </div>
+          </div>
+
+          <!-- 备用跳转 -->
+          <div class="resource-group">
+            <div class="resource-group-title">国内永久跳转</div>
+            <div class="grid-2col" style="margin-bottom: 14px;">
+              <a href="https://xhyjs.app" target="_blank" class="btn-resource">xhyjs.app</a>
+              <a href="https://xhyjs.cc" target="_blank" class="btn-resource">xhyjs.cc</a>
+              <a href="https://xhyjs.de" target="_blank" class="btn-resource">xhyjs.de</a>
+              <a href="https://xhyjs.net" target="_blank" class="btn-resource">xhyjs.net</a>
+              <a href="https://xhyjs.org" target="_blank" class="btn-resource">xhyjs.org</a>
+              <a href="https://xhyjs.uk" target="_blank" class="btn-resource">xhyjs.uk</a>
+            </div>
+
+            <div class="resource-group-title">国外永久网址</div>
+            <div class="btn-list" style="margin-bottom: 14px;">
+              <a href="https://newhua99.com" target="_blank" class="btn-resource">newhua99.com</a>
+            </div>
+
+            <div class="resource-group-title">获取最新地址邮箱</div>
+            <div class="btn-list">
+              <a href="mailto:URL@xhyjs.net" class="btn-resource">URL@xhyjs.net</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 返回选择 -->
+        <div class="back-nav">
+          <button class="btn-back" onclick="selectState(null)">← 返回重新选择</button>
+        </div>
+      </div>
     </div>
 
-    <hr class="notice-divider">
+  </main>
 
-    <div class="notice-footer">
-      <!-- 勾选区域 -->
-      <label id="checkLabel" style="display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;font-size:15px;color:#ccc;margin-bottom:20px;user-select:none;">
-        <input type="checkbox" id="agreeCheck" onchange="onCheckChange()" style="width:18px;height:18px;cursor:pointer;accent-color:#ffeb3b;">
-        我已阅读，我已知晓
-      </label>
+  <script>
+    // ========================================
+    // 集中地址配置
+    // ========================================
+    const OLD_SITE_URL = "https://nkjjggffyffftftghhuuxhy.2015010.xyz/";
+    const NEW_SITE_URL = "https://go.xhyjs.cc";
 
-      <button id="confirmBtn" onclick="confirmNotice()">确认</button>
-      <div id="countdownTip">请先勾选上方选项</div>
-    </div>
-  </div>
-</div>
+    document.addEventListener("DOMContentLoaded", () => {
+      const oldBtn = document.getElementById("oldSiteBtn");
+      const newBtn = document.getElementById("newSiteBtn");
+      if (oldBtn) oldBtn.href = OLD_SITE_URL;
+      if (newBtn) newBtn.href = NEW_SITE_URL;
+      renderLines();
+    });
 
-<!-- 主内容 -->
-<div class="container" id="mainContent" style="display:none">
+    // 核心视图切换逻辑
+    function selectState(state) {
+      const unmigratedView = document.getElementById("unmigratedView");
+      const migratedView = document.getElementById("migratedView");
+      const btnUnmigrated = document.getElementById("btnUnmigrated");
+      const btnMigrated = document.getElementById("btnMigrated");
+      const heroCard = document.getElementById("heroCard");
 
-<div class="glass left">
-<div>
-<h1>新华云最新地址发布页</h1>
+      if (state === 'unmigrated') {
+        migratedView.style.display = "none";
+        unmigratedView.style.display = "block";
 
-<div class="detect-header">
-<span class="section-title">官网线路选择</span>
-<button class="recheck" onclick="startCheck()">重新检测</button>
-</div>
+        btnUnmigrated.classList.add("active");
+        btnMigrated.classList.remove("active");
 
-<div class="line-grid" id="lineGrid"></div>
-</div>
+        unmigratedView.scrollIntoView({ behavior: "smooth", block: "start" });
 
-<div class="note">
-按顺序检测，可用后自动停止<br>
-别完全依赖自动检测哦～有时手动访问更快！<br>
-如果都进不去，用浏览器无痕模式打开这个页面再刷新就行啦。
-</div>
-</div>
+      } else if (state === 'migrated') {
+        unmigratedView.style.display = "none";
+        migratedView.style.display = "block";
 
-<div class="glass right">
-<div class="section-title">务必收藏</div>
-<a href="https://url.mimy.cc/newhua" target="_blank" class="btn">防失联发布页</a>
-<a href="https://t.me/newhua999" target="_blank" class="btn">频道订阅</a>
-<a href="https://t.me/newhua99" target="_blank" class="btn">官方群组</a>
-<a href="https://t.me/newhua" target="_blank" class="btn">商务合作</a>
-<a href="https://ios.mimy.cc" target="_blank" class="btn">福利商店</a>
-<a href="https://help.xhyjs.de/" target="_blank" class="btn">帮助文档</a>
+        btnMigrated.classList.add("active");
+        btnUnmigrated.classList.remove("active");
 
-<div class="section-title">国内永久跳转</div>
-<div class="domain-grid">
-<a href="https://xhyjs.app" target="_blank" class="btn">xhyjs.app</a>
-<a href="https://xhyjs.cc" target="_blank" class="btn">xhyjs.cc</a>
-<a href="https://xhyjs.de" target="_blank" class="btn">xhyjs.de</a>
-<a href="https://xhyjs.net" target="_blank" class="btn">xhyjs.net</a>
-<a href="https://xhyjs.org" target="_blank" class="btn">xhyjs.org</a>
-<a href="https://xhyjs.uk" target="_blank" class="btn">xhyjs.uk</a>
-</div>
+        startCheck();
+        migratedView.scrollIntoView({ behavior: "smooth", block: "start" });
 
-<div class="section-title">快捷跳转页</div>
-<a href="https://url.mimy.cc/newhua" target="_blank" class="btn">url.mimy.cc/newhua</a>
+      } else {
+        // null: 返回初始选择状态
+        unmigratedView.style.display = "none";
+        migratedView.style.display = "none";
 
-<div class="section-title">国外永久网址</div>
-<a href="https://newhua99.com" target="_blank" class="btn">newhua99.com</a>
+        btnUnmigrated.classList.remove("active");
+        btnMigrated.classList.remove("active");
 
-<div class="section-title">发送邮件至获取最新地址</div>
-<a href="mailto:URL@xhyjs.net" class="btn">URL@xhyjs.net</a>
-</div>
-
-</div>
-
-<script>
-const urls=[
-"https://nnakdshiuiduhfduafffdsss1.7788991.xyz/",
-"https://nkjjfusuiuhfdfjjfjs2.7897891.xyz/",
-"https://newetyhbgolifhfgaerrbffr333.2012102.xyz/",
-"https://nsudgayugdjkjdajhfdds4.7897891.xyz/",
-"https://nkjdfbkoashofe5.8080805.xyz/",
-"https://nnnkhsduadiofurdjdhf6.2012102.xyz/",
-"https://njhgiuguyigtvcyrcfhhj7.5675670.xyz/",
-"https://njashdlks9i99wsajshaa9.5675670.xyz/",
-"https://nnaisduhodaf8a8wd8.9879876.xyz/",
-"https://nkjujkhddfh1010.7788991.xyz/",
-"https://njdshuifhekddesdsfds11.6816868.xyz/",
-"https://nkjduhwedxdspsdo12.6816868.xyz/",
-"https://njhsaduiasjhfwfhyehdha13.8080805.xyz/",
-"http://nnasdkfkuiuawhui14w14.9879876.xyz/"
-];
-
-const grid=document.getElementById("lineGrid");
-urls.forEach((url,i)=>{
-  const card=document.createElement("div");
-  card.className="line-card";
-  card.innerHTML=`
-    <div class="line-title">官网线路${i+1}</div>
-    <div class="line-status pending">未检测</div>
-  `;
-  card.onclick=()=>window.open(url,"_blank");
-  grid.appendChild(card);
-});
-
-async function startCheck(){
-  const cards=document.querySelectorAll(".line-card");
-  for(let c of cards){
-    c.classList.remove("active");
-    c.querySelector(".line-status").textContent="检测中...";
-    c.querySelector(".line-status").className="line-status pending";
-  }
-  for(let i=0;i<urls.length;i++){
-    const card=cards[i];
-    const status=card.querySelector(".line-status");
-    try{
-      const controller=new AbortController();
-      const timeout=setTimeout(()=>controller.abort(),6000);
-      await fetch(urls[i],{method:"HEAD",mode:"no-cors",signal:controller.signal});
-      clearTimeout(timeout);
-      status.textContent="✅ 可访问";
-      status.className="line-status success";
-      card.classList.add("active");
-      break;
-    }catch{
-      status.textContent="❌ 无法访问";
-      status.className="line-status fail";
+        heroCard.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     }
-  }
-}
 
-/* ===== 颜色验证逻辑 ===== */
-const colorMap = {
-  "红色": "#ff4d4f",
-  "黄色": "#ffec3d",
-  "绿色": "#52c41a",
-  "蓝色": "#1890ff",
-  "白色": "#ffffff",
-  "黑色": "#141414",
-  "橙色": "#ff7a45"
-};
+    // 官网地址列表
+    const urls = [
+      "https://nnakdshiuiduhfduafffdsss1.7788991.xyz/",
+      "https://nkjjfusuiuhfdfjjfjs2.7897891.xyz/",
+      "https://newetyhbgolifhfgaerrbffr333.2012102.xyz/",
+      "https://nsudgayugdjkjdajhfdds4.7897891.xyz/",
+      "https://nkjdfbkoashofe5.8080805.xyz/",
+      "https://nnnkhsduadiofurdjdhf6.2012102.xyz/",
+      "https://njhgiuguyigtvcyrcfhhj7.5675670.xyz/",
+      "https://njashdlks9i99wsajshaa9.5675670.xyz/",
+      "https://nnaisduhodaf8a8wd8.9879876.xyz/",
+      "https://nkjujkhddfh1010.7788991.xyz/",
+      "https://njdshuifhekddesdsfds11.6816868.xyz/",
+      "https://nkjduhwedxdspsdo12.6816868.xyz/",
+      "https://njhsaduiasjhfwfhyehdha13.8080805.xyz/",
+      "http://nnasdkfkuiuawhui14w14.9879876.xyz/"
+    ];
 
-const questionBank = [
-  { q: "🍅 西红柿通常是什么颜色？", a: "红色" },
-  { q: "🍌 香蕉通常是什么颜色？", a: "黄色" },
-  { q: "🌱 新鲜的草通常是什么颜色？", a: "绿色" },
-  { q: "☁️ 晴朗的天空通常是什么颜色？", a: "蓝色" },
-  { q: "🥛 牛奶通常是什么颜色？", a: "白色" },
-  { q: "🐦‍⬛ 乌鸦通常是什么颜色？", a: "黑色" },
-  { q: "🥕 胡萝卜通常是什么颜色？", a: "橙色" },
-  { q: "🍓 草莓通常是什么颜色？", a: "红色" },
-  { q: "🫐 蓝莓通常是什么颜色？", a: "蓝色" },
-  { q: "🥦 西兰花通常是什么颜色？", a: "绿色" },
-  { q: "🍊 橙子通常是什么颜色？", a: "橙色" },
-  { q: "🍉 西瓜果肉通常是什么颜色？", a: "红色" },
-  { q: "🥬 青菜通常是什么颜色？", a: "绿色" },
-  { q: "🧅 洋葱通常是什么颜色？", a: "白色" },
-  { q: "🌹 红玫瑰通常是什么颜色？", a: "红色" },
-  { q: "☁️ 云朵通常是什么颜色？", a: "白色" },
-  { q: "🖤 煤炭通常是什么颜色？", a: "黑色" },
-  { q: "🚦 交通信号灯表示“停止”的灯通常是什么颜色？", a: "红色" },
-  { q: "🚦 交通信号灯表示“通行”的灯通常是什么颜色？", a: "绿色" },
-  { q: "🚦 交通信号灯表示“注意”的灯通常是什么颜色？", a: "黄色" }
-];
-
-let currentCorrectColor = "";
-
-function generateQuestion(){
-  const randomItem = questionBank[Math.floor(Math.random() * questionBank.length)];
-  currentCorrectColor = randomItem.a;
-  document.getElementById("question").textContent = randomItem.q;
-
-  const allColors = Object.keys(colorMap);
-  const wrongColors = allColors.filter(c => c !== currentCorrectColor);
-
-  // 随机取3个错误颜色
-  wrongColors.sort(() => Math.random() - 0.5);
-  const selectedColors = [currentCorrectColor, wrongColors[0], wrongColors[1], wrongColors[2]];
-
-  // 打乱4个选项
-  selectedColors.sort(() => Math.random() - 0.5);
-
-  const colorGrid = document.getElementById("colorGrid");
-  colorGrid.innerHTML = "";
-
-  selectedColors.forEach(colorName => {
-    const btn = document.createElement("button");
-    btn.className = "color-btn";
-    btn.style.backgroundColor = colorMap[colorName];
-    btn.onclick = () => checkAnswer(colorName);
-    colorGrid.appendChild(btn);
-  });
-}
-
-function checkAnswer(selectedColor){
-  if(selectedColor === currentCorrectColor){
-    document.getElementById("verifyBox").style.display = "none";
-    showNotice();
-  }else{
-    alert("回答错误，请重新选择");
-    generateQuestion();
-  }
-}
-
-// 初始化生成第一道验证题
-generateQuestion();
-
-/* ===== 弹窗逻辑 ===== */
-function showNotice(){
-  document.getElementById("noticeOverlay").style.display="flex";
-}
-
-function onCheckChange(){
-  const checked=document.getElementById("agreeCheck").checked;
-  const btn=document.getElementById("confirmBtn");
-  const tip=document.getElementById("countdownTip");
-
-  if(!checked){
-    btn.classList.remove("unlocked");
-    tip.textContent="请先勾选上方选项";
-    return;
-  }
-
-  // 勾选后禁用复选框防止重复触发，开始倒计时
-  document.getElementById("agreeCheck").disabled=true;
-  let count=3;
-  tip.innerHTML=`请等待 <span id="countNum">${count}</span> 秒后确认...`;
-
-  const timer=setInterval(()=>{
-    count--;
-    const el=document.getElementById("countNum");
-    if(count<=0){
-      clearInterval(timer);
-      btn.classList.add("unlocked");
-      tip.textContent="现在可以点击确认啦 ✅";
-    }else{
-      if(el) el.textContent=count;
+    function renderLines() {
+      const grid = document.getElementById("lineGrid");
+      if (!grid) return;
+      grid.innerHTML = "";
+      urls.forEach((url, i) => {
+        const card = document.createElement("div");
+        card.className = "line-card";
+        card.innerHTML = `
+          <span class="line-name">官网地址 ${i + 1}</span>
+          <span class="line-status status-pending">未检测</span>
+        `;
+        card.onclick = () => window.open(url, "_blank");
+        grid.appendChild(card);
+      });
     }
-  },1000);
-}
 
-function confirmNotice(){
-  const btn=document.getElementById("confirmBtn");
-  if(!btn.classList.contains("unlocked")) return;
-  document.getElementById("noticeOverlay").style.display="none";
-  document.getElementById("mainContent").style.display="flex";
-  setTimeout(startCheck,200);
-}
-</script>
+    async function startCheck() {
+      const cards = document.querySelectorAll(".line-card");
+      if (!cards.length) return;
 
+      for (let c of cards) {
+        c.classList.remove("active");
+        const statusEl = c.querySelector(".line-status");
+        statusEl.textContent = "检测中...";
+        statusEl.className = "line-status status-pending";
+      }
+
+      for (let i = 0; i < urls.length; i++) {
+        const card = cards[i];
+        const status = card.querySelector(".line-status");
+        try {
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 6000);
+          await fetch(urls[i], { method: "HEAD", mode: "no-cors", signal: controller.signal });
+          clearTimeout(timeout);
+          status.textContent = "✅ 可访问";
+          status.className = "line-status status-success";
+          card.classList.add("active");
+          break;
+        } catch {
+          status.textContent = "❌ 无法访问";
+          status.className = "line-status status-fail";
+        }
+      }
+    }
+  </script>
+
+  <!-- Crisp 客服配置 -->
+  <script type="text/javascript">
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "bac83da9-488b-4c0c-956b-4059891eb205";
+    (function () {
+      d = document;
+      s = d.createElement("script");
+      s.src = "https://client.crisp.chat/l.js";
+      s.async = 1;
+      d.getElementsByTagName("head")[0].appendChild(s);
+    })();
+  </script>
 </body>
 </html>
-<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="bac83da9-488b-4c0c-956b-4059891eb205";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
