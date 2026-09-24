@@ -2,889 +2,818 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f5f7fb">
-  <title>新华云｜迁移指引与活动优惠</title>
-  <meta name="description" content="新华云站点迁移办理指引、最新地址及国庆中秋优惠活动。">
-  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>新华云｜官方最新地址发布页</title>
+  <meta name="description" content="新华云官方最新地址发布页及站点迁移指引。">
+  <link rel="shortcut icon" href="/favicon.ico" />
 
   <style>
     :root {
-      --page: #f5f7fb;
-      --card: #fff;
-      --ink: #172033;
-      --muted: #69758b;
-      --line: #e5eaf2;
-      --blue: #315ee8;
-      --blue-soft: #eef3ff;
-      --orange: #e85c22;
-      --orange-dark: #a83b12;
-      --orange-soft: #fff4ec;
-      --green: #087a59;
-      --green-soft: #ecf9f3;
-      --radius: 18px;
-      --shadow: 0 12px 35px rgba(28, 43, 75, .08);
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --accent-orange: #ea580c;
+      --accent-orange-light: #fff7ed;
+      --accent-green: #059669;
+      --accent-green-light: #ecfdf5;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08);
+      --radius: 16px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
       min-height: 100vh;
-      background:
-        radial-gradient(ellipse at 10% 0%, #eaf0ff 0, transparent 35%),
-        var(--page);
-      color: var(--ink);
-      font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI",
-        "PingFang SC", "Microsoft YaHei", sans-serif;
-    }
-
-    a { color: inherit; }
-
-    .page {
-      width: min(1120px, calc(100% - 36px));
-      margin: 0 auto;
-      padding: 20px 0;
-    }
-
-    .topbar {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 16px;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 clamp(12px, 3vw, 20px);
+      width: 100%;
+    }
+
+    .header {
+      padding: clamp(12px, 2.5vh, 28px) 0 clamp(6px, 1vh, 12px);
+      text-align: center;
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 13px;
-      background: linear-gradient(145deg, #4775ff, #2149ce);
-      color: #fff;
-      font-size: 20px;
-      font-weight: 900;
-      box-shadow: 0 7px 16px #315ee833;
-    }
-
-    .brand-name {
-      font-size: 19px;
-      line-height: 1.2;
-      font-weight: 850;
-      letter-spacing: .02em;
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .brand-sub {
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 500;
     }
 
-    .top-note {
-      color: var(--muted);
-      font-size: 12px;
-      text-align: right;
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 20px 24px;
-      margin-bottom: 14px;
-      border: 1px solid #dfe7ff;
+    .hero-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius);
-      background: linear-gradient(105deg, #fff 5%, #f5f7ff 100%);
-      box-shadow: var(--shadow);
+      padding: clamp(18px, 3.5vh, 40px) clamp(16px, 3vw, 32px);
+      text-align: center;
+      margin: clamp(10px, 2vh, 20px) 0 clamp(14px, 2.5vh, 30px);
+      box-shadow: var(--shadow-md);
     }
 
-    .hero::after {
-      content: "双节";
-      position: absolute;
-      right: 24px;
-      top: -35px;
-      color: rgba(49, 94, 232, .055);
-      font-size: 126px;
-      line-height: 1;
-      font-weight: 950;
-      pointer-events: none;
-    }
-
-    .hero-copy, .state-switch { position: relative; z-index: 1; }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--orange-dark);
-      background: var(--orange-soft);
-      border: 1px solid #ffddc7;
-      border-radius: 999px;
-      padding: 4px 10px;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    h1 {
-      margin: 8px 0 3px;
-      font-size: clamp(21px, 3vw, 29px);
-      line-height: 1.25;
-      letter-spacing: -.03em;
-    }
-
-    .hero-copy p {
-      margin: 0;
-      color: var(--muted);
+    .notice-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background: #fef3c7;
+      color: #b45309;
+      border-radius: 20px;
       font-size: 13px;
+      font-weight: 700;
+      margin-bottom: clamp(8px, 1.5vh, 16px);
+      border: 1px solid #fde68a;
     }
 
-    .state-switch {
-      flex: 0 0 auto;
-      display: flex;
-      padding: 4px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: #fff;
-      box-shadow: 0 3px 12px #1c2b4d0b;
+    .hero-title {
+      font-size: clamp(16px, 2.2vw, 20px);
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.4;
     }
 
-    .state-btn {
-      border: 0;
-      border-radius: 9px;
-      padding: 10px 13px;
-      background: transparent;
-      color: var(--muted);
-      font: inherit;
-      font-size: 13px;
-      font-weight: 750;
-      white-space: nowrap;
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: clamp(14px, 2.5vh, 28px);
+    }
+
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(10px, 2vw, 20px);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .choice-btn {
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      border-radius: 14px;
+      padding: clamp(14px, 2.5vh, 22px) 16px;
       cursor: pointer;
-      transition: .18s ease;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      outline: none;
     }
 
-    .state-btn:hover { color: var(--ink); background: #f5f7fb; }
-
-    .state-btn.active {
-      color: #fff;
-      background: var(--orange);
-      box-shadow: 0 4px 10px #e85c2233;
+    .choice-btn .btn-tag {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 6px;
     }
 
-    .state-btn.active.done {
-      background: var(--green);
-      box-shadow: 0 4px 10px #087a5933;
+    .choice-btn .btn-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
     }
 
-    .content { display: none; }
-    .content.active { display: block; animation: enter .22s ease-out; }
+    .choice-btn.unmigrated {
+      border-color: #fed7aa;
+      background: #fff8f6;
+    }
 
-    @keyframes enter {
-      from { opacity: 0; transform: translateY(5px); }
+    .choice-btn.unmigrated .btn-tag {
+      background: #ffedd5;
+      color: var(--accent-orange);
+    }
+
+    .choice-btn.unmigrated:hover,
+    .choice-btn.unmigrated.active {
+      border-color: var(--accent-orange);
+      background: var(--accent-orange-light);
+      box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .choice-btn.migrated {
+      border-color: #a7f3d0;
+      background: #f6fbf9;
+    }
+
+    .choice-btn.migrated .btn-tag {
+      background: #d1fae5;
+      color: var(--accent-green);
+    }
+
+    .choice-btn.migrated:hover,
+    .choice-btn.migrated.active {
+      border-color: var(--accent-green);
+      background: var(--accent-green-light);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .dynamic-view {
+      display: none;
+      animation: fadeIn 0.35s ease-in-out;
+      margin-bottom: 50px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .migration-grid {
-      display: grid;
-      grid-template-columns: 1.03fr .97fr;
-      gap: 14px;
-    }
-
-    .panel {
-      min-width: 0;
-      border: 1px solid var(--line);
+    .content-panel {
+      background: var(--bg-card);
       border-radius: var(--radius);
-      background: var(--card);
-      box-shadow: var(--shadow);
+      padding: clamp(16px, 3vw, 32px);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
     }
 
-    .guide-panel { padding: 19px; }
-
-    .section-heading {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 14px;
-      font-size: 17px;
-      line-height: 1.3;
-      font-weight: 850;
+    .panel-header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
     }
 
-    .section-icon {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      border-radius: 11px;
-      background: var(--orange-soft);
-      font-size: 17px;
-    }
-
-    .old-site-cta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 14px 15px;
-      margin-bottom: 13px;
-      border: 1px solid #ffd9c2;
-      border-radius: 13px;
-      background: linear-gradient(110deg, #fff7f1, #fff);
-    }
-
-    .cta-title {
-      font-size: 14px;
+    .panel-title {
+      font-size: 22px;
       font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .cta-caption {
-      margin-top: 2px;
-      color: var(--muted);
-      font-size: 12px;
+    .action-focus-box {
+      background: #fff7ed;
+      border: 2px dashed #f97316;
+      border-radius: 12px;
+      padding: clamp(12px, 2vh, 20px);
+      text-align: center;
+      margin-bottom: clamp(14px, 2.5vh, 28px);
     }
 
-    .primary-link {
+    .action-focus-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #c2410c;
+      margin-bottom: 10px;
+    }
+
+    .btn-old-site-main {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      flex: 0 0 auto;
-      padding: 10px 14px;
-      border-radius: 10px;
-      background: var(--orange);
+      padding: 12px 32px;
+      background: var(--accent-orange);
       color: #fff;
+      font-weight: 800;
+      font-size: 17px;
+      border-radius: 10px;
       text-decoration: none;
-      font-size: 13px;
-      font-weight: 850;
-      box-shadow: 0 5px 12px #e85c222c;
-      transition: .18s ease;
+      box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
+      transition: all 0.2s ease;
     }
 
-    .primary-link:hover {
-      background: #cf4815;
-      transform: translateY(-1px);
+    .btn-old-site-main:hover {
+      background: #c2410c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(234, 88, 12, 0.4);
     }
 
-    .steps {
+    .steps-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-bottom: 13px;
+      gap: 10px;
+      margin-bottom: clamp(14px, 2.5vh, 28px);
     }
 
-    .step {
-      padding: 10px 9px;
-      border: 1px solid var(--line);
-      border-radius: 11px;
-      background: #fafbfe;
+    .step-item {
+      background: var(--bg-main);
+      padding: 12px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
     }
 
     .step-num {
-      color: var(--orange);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .08em;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-orange);
+      margin-bottom: 4px;
     }
 
     .step-title {
-      margin-top: 3px;
-      font-size: 12px;
-      font-weight: 800;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2px;
     }
 
     .step-desc {
-      margin-top: 2px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.4;
+      font-size: 12px;
+      color: var(--text-muted);
     }
 
-    .ticket-box {
-      padding: 12px 14px;
-      border: 1px solid #d7e3ff;
+    .ticket-warning-card {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
       border-radius: 12px;
-      background: var(--blue-soft);
+      padding: 14px 16px;
+      margin-bottom: clamp(14px, 2.5vh, 28px);
     }
 
-    .ticket-title {
-      margin-bottom: 5px;
-      color: #244bbd;
-      font-size: 13px;
-      font-weight: 850;
-    }
-
-    .ticket-details {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-
-    .ticket-chip {
-      padding: 4px 9px;
-      border: 1px solid #d5e0ff;
-      border-radius: 7px;
-      background: #fff;
-      color: #34415b;
-      font-size: 12px;
-    }
-
-    .ticket-chip strong { color: #244bbd; }
-
-    .ticket-note {
-      margin-top: 7px;
-      color: #5a6780;
-      font-size: 11px;
-    }
-
-    .offer-panel {
-      position: relative;
-      overflow: hidden;
-      padding: 21px;
-      border-color: #ffdec9;
-      background:
-        radial-gradient(circle at 100% 0%, #ffddb9 0, transparent 35%),
-        linear-gradient(145deg, #fff9f3, #fff 72%);
-    }
-
-    .offer-kicker {
-      display: inline-flex;
-      padding: 4px 9px;
-      border-radius: 999px;
-      color: #a33d12;
-      background: #ffeadc;
-      font-size: 11px;
-      font-weight: 850;
-      letter-spacing: .04em;
-    }
-
-    .offer-title {
-      margin: 10px 0 5px;
-      color: #722c10;
-      font-size: clamp(22px, 3vw, 31px);
-      font-weight: 950;
-      letter-spacing: -.04em;
-      line-height: 1.1;
-    }
-
-    .offer-title em {
-      color: var(--orange);
-      font-style: normal;
-    }
-
-    .offer-intro {
-      max-width: 460px;
-      margin: 0;
-      color: #6b5c54;
-      font-size: 12px;
-    }
-
-    .discount {
+    .ticket-warning-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e40af;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin: 16px 0 13px;
-      padding: 12px 14px;
-      border-radius: 13px;
-      background: linear-gradient(105deg, #ed5a20, #f28a2b);
-      color: #fff;
-      box-shadow: 0 8px 18px #e85c222b;
+      gap: 6px;
     }
 
-    .discount-num {
-      font-size: 38px;
-      line-height: 1;
-      font-weight: 950;
-      letter-spacing: -.06em;
+    .ticket-info {
+      font-size: 13px;
+      color: var(--text-main);
+      margin-top: 4px;
     }
 
-    .discount-copy {
-      font-size: 12px;
-      line-height: 1.4;
-      opacity: .96;
+    .campaign-card {
+      background: linear-gradient(135deg, #fff7ed, #fffbeb);
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: clamp(14px, 2.5vh, 28px);
     }
 
-    .discount-copy strong {
-      display: block;
-      font-size: 15px;
+    .campaign-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #9a3412;
+      margin-bottom: 8px;
     }
 
-    .offer-facts {
+    .campaign-intro {
+      font-size: 13px;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    .campaign-details {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .campaign-detail {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #ffedd5;
+      border-radius: 9px;
+      padding: 9px 12px;
+      font-size: 13px;
+    }
+
+    .campaign-detail strong { color: #9a3412; }
+
+    .campaign-code {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 6px;
+      background: #ffedd5;
+      color: #9a3412;
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .faq-item {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+
+    .faq-item[open] { padding-bottom: 14px; }
+
+    .faq-question {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text-main);
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .faq-question::-webkit-details-marker { display: none; }
+
+    .faq-question::after {
+      content: "+";
+      float: right;
+      font-weight: 800;
+      color: var(--text-muted);
+    }
+
+    .faq-item[open] .faq-question::after { content: "−"; }
+
+    .faq-answer {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+
+    .migrated-notice-bar {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
       gap: 8px;
     }
 
-    .fact {
-      padding: 9px 10px;
-      border: 1px solid #f5e4d8;
-      border-radius: 10px;
-      background: rgba(255,255,255,.82);
-    }
-
-    .fact-label {
-      color: #927c6e;
-      font-size: 10px;
-      font-weight: 700;
-    }
-
-    .fact-value {
-      margin-top: 2px;
-      color: #37271f;
-      font-size: 12px;
-      font-weight: 850;
-    }
-
-    .coupon {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      color: var(--orange-dark);
-    }
-
-    .coupon-code {
-      padding: 1px 8px;
-      border: 1px dashed #ed8b5c;
-      border-radius: 6px;
-      background: #fff4eb;
-      font-size: 18px;
-      font-weight: 950;
-      letter-spacing: .08em;
-    }
-
-    .usage {
-      margin-top: 9px;
-      padding: 10px 11px;
-      border-radius: 10px;
-      background: #fff;
-      color: #66564d;
-      font-size: 11px;
-    }
-
-    .usage strong { color: #8d3815; }
-
-    .migration-faq {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px;
-      margin-top: 12px;
-    }
-
-    .faq {
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 11px;
-      background: #fff;
-    }
-
-    .faq strong {
-      display: block;
-      margin-bottom: 3px;
-      font-size: 11px;
-    }
-
-    .faq span {
-      display: block;
-      color: var(--muted);
-      font-size: 10px;
-      line-height: 1.45;
-    }
-
-    .migrated-panel { padding: 20px; }
-
-    .migrated-note {
-      padding: 11px 13px;
-      margin-bottom: 12px;
-      border: 1px solid #c9ecdc;
-      border-radius: 11px;
-      background: var(--green-soft);
-      color: #17664f;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .portal {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 15px;
-      margin-bottom: 14px;
-      border-radius: 13px;
-      background: linear-gradient(110deg, #315ee8, #2043b5);
+    .main-portal-card {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
       color: #fff;
-    }
-
-    .portal h2 {
-      margin: 0;
-      font-size: 17px;
-    }
-
-    .portal p {
-      margin: 3px 0 0;
-      font-size: 11px;
-      opacity: .86;
-    }
-
-    .portal-link {
-      padding: 9px 13px;
-      border-radius: 9px;
-      background: #fff;
-      color: var(--blue);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 850;
-      white-space: nowrap;
-    }
-
-    .address-heading {
+      padding: 16px 20px;
+      border-radius: 14px;
+      margin-bottom: 16px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      margin: 6px 0 8px;
-      font-size: 14px;
-      font-weight: 850;
+      align-items: center;
     }
 
-    .recheck {
-      padding: 6px 10px;
-      border: 0;
+    .portal-info h3 { font-size: 18px; margin-bottom: 3px; }
+    .portal-info p { font-size: 12px; opacity: 0.9; }
+
+    .btn-main-site {
+      background: #fff;
+      color: var(--primary);
+      padding: 10px 22px;
       border-radius: 8px;
-      background: var(--blue-soft);
-      color: var(--blue);
-      font: inherit;
-      font-size: 11px;
-      font-weight: 750;
-      cursor: pointer;
+      font-weight: 800;
+      font-size: 14px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: box-shadow 0.2s;
+    }
+
+    .btn-main-site:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+
+    .line-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 6px;
     }
 
     .line-subtitle {
-      margin-bottom: 9px;
-      color: var(--muted);
-      font-size: 11px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .btn-recheck {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
     }
 
     .line-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 7px;
+      gap: 8px;
+      margin-bottom: 14px;
+      max-height: 220px;
+      overflow-y: auto;
+      padding-right: 4px;
     }
 
     .line-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 5px;
-      min-width: 0;
-      padding: 8px 9px;
-      border: 1px solid var(--line);
-      border-radius: 9px;
-      background: #fafbfe;
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      padding: 9px 12px;
+      border-radius: 10px;
       cursor: pointer;
-      font-size: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
     }
 
-    .line-card:hover, .line-card.active {
-      border-color: #8ed7ba;
-      background: var(--green-soft);
-    }
+    .line-card:hover { border-color: var(--primary); }
+    .line-card.active { border-color: var(--accent-green); background: var(--accent-green-light); }
 
-    .line-name {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      font-weight: 700;
-    }
+    .line-name { font-weight: 600; font-size: 12.5px; }
+    .line-status { font-size: 11px; font-weight: 600; }
+    .status-pending { color: var(--text-muted); }
+    .status-success { color: var(--accent-green); }
+    .status-fail { color: #ef4444; }
 
-    .line-status {
-      flex: 0 0 auto;
-      color: var(--muted);
-      font-size: 9px;
-    }
-
-    .status-success { color: var(--green); }
-    .status-fail { color: #cf3d3d; }
-
-    .resources {
+    .resource-sections {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 13px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 14px;
     }
 
     .resource-group {
-      padding: 11px;
-      border: 1px solid var(--line);
-      border-radius: 11px;
-      background: #fafbfe;
+      background: var(--bg-main);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
     }
 
-    .resource-title {
-      margin-bottom: 7px;
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 850;
+    .resource-group-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 8px;
     }
 
-    .resource-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
+    .btn-list { display: flex; flex-direction: column; gap: 6px; }
+    .grid-2col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
 
-    .resource-list a {
-      padding: 5px 8px;
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      background: #fff;
-      color: #364158;
+    .btn-resource {
+      display: block;
+      padding: 7px 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      text-align: center;
       text-decoration: none;
-      font-size: 10px;
+      color: var(--text-main);
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.2s;
     }
 
-    .resource-list a:hover {
-      border-color: #b9c9ff;
-      color: var(--blue);
+    .btn-resource:hover { border-color: var(--primary); color: var(--primary); }
+
+    .back-nav {
+      text-align: center;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-color);
     }
 
-    @media (min-width: 900px) and (min-height: 650px) {
-      .page {
-        min-height: 100vh;
-        display: flex;
+    .btn-back {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+
+    .btn-back:hover {
+      background: var(--border-color);
+      color: var(--text-main);
+    }
+
+    @media (max-width: 768px) {
+      .decision-grid, .steps-grid, .resource-sections {
+        grid-template-columns: 1fr;
+      }
+
+      .line-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .main-portal-card {
         flex-direction: column;
-        justify-content: center;
-        padding: 18px 0;
+        text-align: center;
+        gap: 16px;
       }
+
+      .btn-main-site { width: 100%; }
+      .hero-card { padding: 20px 16px; }
+      .content-panel { padding: 16px; }
     }
 
-    @media (max-width: 760px) {
-      .page { width: min(100% - 24px, 560px); padding: 12px 0 24px; }
-      .topbar { margin-bottom: 11px; }
-      .top-note { max-width: 130px; font-size: 10px; }
-      .hero { display: block; padding: 17px; }
-      .hero::after { right: 5px; font-size: 95px; }
-      .hero-copy p { max-width: 420px; font-size: 12px; }
-      .state-switch { width: 100%; margin-top: 14px; }
-      .state-btn { flex: 1; white-space: normal; padding: 9px 7px; }
-      .migration-grid { grid-template-columns: 1fr; }
-      .guide-panel, .offer-panel, .migrated-panel { padding: 15px; }
-      .offer-title { font-size: 27px; }
-      .line-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 420px) {
-      .steps { grid-template-columns: repeat(2, 1fr); }
-      .step { padding: 9px; }
-      .old-site-cta { align-items: flex-start; flex-direction: column; }
-      .primary-link { width: 100%; }
-      .migration-faq { grid-template-columns: 1fr; }
-      .offer-facts { grid-template-columns: 1fr 1fr; }
-      .resources { grid-template-columns: 1fr; }
-      .portal { align-items: flex-start; flex-direction: column; }
-      .portal-link { width: 100%; text-align: center; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-      }
+    /* Short / laptop-height viewports: tighten things further so the page
+       needs little or no vertical scrolling. */
+    @media (max-height: 760px) {
+      .header { padding: 8px 0 4px; }
+      .brand { font-size: 20px; }
+      .hero-card { padding: 14px 18px; margin: 8px 0 12px; }
+      .notice-badge { margin-bottom: 6px; }
+      .hero-title { font-size: 15px; margin-bottom: 4px; }
+      .hero-subtitle { margin-bottom: 12px; }
+      .choice-btn { padding: 10px 14px; }
+      .content-panel { padding: 14px 16px; }
+      .panel-header { margin-bottom: 10px; padding-bottom: 8px; }
+      .line-grid { max-height: 160px; }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-mark">新</div>
-        <div>
-          <div class="brand-name">新华云</div>
-          <div class="brand-sub">官方最新地址与迁移公告</div>
-        </div>
-      </div>
-      <div class="top-note">请根据您的迁移状态<br>选择对应指引</div>
-    </header>
 
-    <section class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">🎉 新站上线 · 双节限时活动</span>
-        <h1>站点迁移办理指引</h1>
-        <p>尚未迁移的用户请前往老站提交工单；已完成迁移的用户可查看新站地址。</p>
-      </div>
-      <div class="state-switch" role="group" aria-label="选择迁移状态">
-        <button class="state-btn active" id="btnUnmigrated" type="button" onclick="selectState('unmigrated')">
-          尚未迁移
+  <header class="header">
+    <a href="#" class="brand">新华云</a>
+    <div class="brand-sub">官方最新地址发布页</div>
+  </header>
+
+  <main class="container">
+
+    <div id="heroCard" class="hero-card">
+      <span class="notice-badge">⚠️ 重要通知</span>
+      <h1 class="hero-title">近期由于网络环境变化，新华云已进行站点迁移。</h1>
+      <p class="hero-subtitle">请问您是否已经完成迁移？</p>
+
+      <div class="decision-grid">
+        <button id="btnUnmigrated" class="choice-btn unmigrated" onclick="selectState('unmigrated')">
+          <span class="btn-tag">尚未迁移</span>
+          <span class="btn-text">🟠 我还没有办理迁移</span>
         </button>
-        <button class="state-btn" id="btnMigrated" type="button" onclick="selectState('migrated')">
-          已完成迁移
+
+        <button id="btnMigrated" class="choice-btn migrated" onclick="selectState('migrated')">
+          <span class="btn-tag">已经迁移</span>
+          <span class="btn-text">🟢 我已经完成迁移</span>
         </button>
       </div>
-    </section>
+    </div>
 
-    <section class="content active" id="unmigratedView">
-      <div class="migration-grid">
-        <section class="panel guide-panel">
-          <h2 class="section-heading">
-            <span class="section-icon">📋</span>
-            老站迁移办理
-          </h2>
-
-          <div class="old-site-cta">
-            <div>
-              <div class="cta-title">请前往老站提交迁移工单</div>
-              <div class="cta-caption">使用原老站账号登录并进入工单中心</div>
-            </div>
-            <a id="oldSiteBtn" href="#" target="_blank" rel="noopener noreferrer" class="primary-link">
-              前往老站办理 <span aria-hidden="true">→</span>
-            </a>
-          </div>
-
-          <div class="steps" aria-label="迁移办理步骤">
-            <div class="step">
-              <div class="step-num">01</div>
-              <div class="step-title">登录老站</div>
-              <div class="step-desc">使用原账号登录</div>
-            </div>
-            <div class="step">
-              <div class="step-num">02</div>
-              <div class="step-title">新建工单</div>
-              <div class="step-desc">进入工单中心</div>
-            </div>
-            <div class="step">
-              <div class="step-num">03</div>
-              <div class="step-title">填写信息</div>
-              <div class="step-desc">按下方要求填写</div>
-            </div>
-            <div class="step">
-              <div class="step-num">04</div>
-              <div class="step-title">等待处理</div>
-              <div class="step-desc">请留意工单回复</div>
-            </div>
-          </div>
-
-          <div class="ticket-box">
-            <div class="ticket-title">📌 工单填写要求</div>
-            <div class="ticket-details">
-              <span class="ticket-chip">等级：<strong>高</strong></span>
-              <span class="ticket-chip">主题：<strong>迁移</strong></span>
-            </div>
-            <div class="ticket-note">请在工单中说明需要办理站点迁移；活动优惠码请在新站结算时使用，无需填写在工单内。</div>
-          </div>
-
-          <div class="migration-faq">
-            <div class="faq">
-              <strong>提交工单后需要做什么？</strong>
-              <span>请耐心等待，无需重复提交。处理结果和使用方法会通过工单回复。</span>
-            </div>
-            <div class="faq">
-              <strong>多久可以处理完成？</strong>
-              <span>客服及技术人员会按提交顺序集中处理；超过 24 小时未收到回复可再联系协助。</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel offer-panel">
-          <span class="offer-kicker">新站专属 · 国庆中秋限时优惠</span>
-          <h2 class="offer-title">全场套餐 <em>85 折</em></h2>
-          <p class="offer-intro">
-            感谢大家一直以来的支持与理解！恰逢双节到来，新站现已正式上线。
-            全新线路架构全面升级，为您提供更稳定、更顺畅的使用体验。
-          </p>
-
-          <div class="discount">
-            <div class="discount-num">85<span style="font-size:21px">折</span></div>
-            <div class="discount-copy">
-              <strong>国庆中秋限时优惠</strong>
-              新站全场套餐可用，体验套餐除外
-            </div>
-          </div>
-
-          <div class="offer-facts">
-            <div class="fact">
-              <div class="fact-label">活动时间</div>
-              <div class="fact-value">9/19 - 10/15</div>
-            </div>
-            <div class="fact">
-              <div class="fact-label">优惠代码</div>
-              <div class="fact-value coupon">使用 <span class="coupon-code">85</span></div>
-            </div>
-          </div>
-
-          <div class="usage">
-            <strong>使用方法：</strong>在新站选购套餐后，于结算页面输入优惠码 <strong>85</strong>，点击「验证」即可享受折扣。
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <section class="content" id="migratedView">
-      <div class="panel migrated-panel">
-        <div class="migrated-note">
-          ✅ 已完成迁移的用户请使用以下新站入口和可用地址，无需再次提交迁移工单。
+    <!-- 尚未迁移：保留老站工单办理流程 -->
+    <div id="unmigratedView" class="dynamic-view">
+      <div class="content-panel">
+        <div class="panel-header">
+          <h2 class="panel-title" style="color: var(--accent-orange);">📋 迁移办理指引</h2>
         </div>
 
-        <div class="portal">
-          <div>
-            <h2>新华云 · 官方主站入口</h2>
-            <p>迁移完成的用户请进入新站管理节点</p>
-          </div>
-          <a id="newSiteBtn" href="#" target="_blank" rel="noopener noreferrer" class="portal-link">
-            进入官方站点 →
+        <div class="action-focus-box">
+          <div class="action-focus-title">👉 请前往老站提交一份迁移工单</div>
+          <a id="oldSiteBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-old-site-main">
+            前往老站办理迁移 →
           </a>
         </div>
 
-        <div class="address-heading">
-          <span>官方最新地址</span>
-          <button class="recheck" type="button" onclick="startCheck()">重新检测</button>
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-num">01</div>
+            <div class="step-title">前往老站</div>
+            <div class="step-desc">登录原老站账号</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">02</div>
+            <div class="step-title">新的工单</div>
+            <div class="step-desc">进入工单中心发帖</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">03</div>
+            <div class="step-title">填写申请</div>
+            <div class="step-desc">等级选择“高”，主题填写“迁移”</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">04</div>
+            <div class="step-title">等待回复</div>
+            <div class="step-desc">技术集中办理</div>
+          </div>
         </div>
-        <div class="line-subtitle">系统会依次检测地址；也可以直接点击任意地址访问。</div>
-        <div class="line-grid" id="lineGrid"></div>
 
-        <div class="resources">
-          <div class="resource-group">
-            <div class="resource-title">务必收藏</div>
-            <div class="resource-list">
-              <a href="https://url.mimy.cc/newhua" target="_blank" rel="noopener noreferrer">防失联发布页</a>
-              <a href="https://t.me/newhua999" target="_blank" rel="noopener noreferrer">频道订阅</a>
-              <a href="https://t.me/newhua99" target="_blank" rel="noopener noreferrer">官方群组</a>
-              <a href="https://t.me/newhua" target="_blank" rel="noopener noreferrer">商务合作</a>
-              <a href="https://ios.mimy.cc" target="_blank" rel="noopener noreferrer">福利商店</a>
-              <a href="https://help.xhyjs.de/" target="_blank" rel="noopener noreferrer">帮助文档</a>
+        <div class="ticket-warning-card">
+          <div class="ticket-warning-title">
+            📌 工单填写要求
+          </div>
+          <p class="ticket-info">等级请选择【高】，主题填写【迁移】。</p>
+          <p class="ticket-info">请在工单中说明需要办理站点迁移，并按原流程提交工单。</p>
+        </div>
+
+        <!-- 原 A/B 补偿内容已替换为当前活动 -->
+        <section class="campaign-card" aria-labelledby="campaignTitle">
+          <h3 class="campaign-title" id="campaignTitle">🎉 国庆中秋限时 85 折优惠</h3>
+          <p class="campaign-intro">
+            感谢大家一直以来的支持与理解！恰逢双节到来，新站现已正式上线并开启全场限时折扣，
+            全新线路架构全面升级，为您提供更稳定、更顺畅的使用体验。
+          </p>
+          <div class="campaign-details">
+            <div class="campaign-detail"><strong>活动时间：</strong>9/19 - 10/15</div>
+            <div class="campaign-detail"><strong>优惠折扣：</strong>全场套餐 85 折（仅限新站，体验套餐除外）</div>
+            <div class="campaign-detail"><strong>优惠代码：</strong><span class="campaign-code">85</span></div>
+            <div class="campaign-detail">
+              <strong>使用方法：</strong>选购套餐后，在结算页面输入优惠码，点击「验证」即可享受折扣。
             </div>
           </div>
-          <div class="resource-group">
-            <div class="resource-title">备用地址与联系方式</div>
-            <div class="resource-list">
-              <a href="https://xhyjs.app" target="_blank" rel="noopener noreferrer">xhyjs.app</a>
-              <a href="https://xhyjs.cc" target="_blank" rel="noopener noreferrer">xhyjs.cc</a>
-              <a href="https://xhyjs.de" target="_blank" rel="noopener noreferrer">xhyjs.de</a>
-              <a href="https://xhyjs.net" target="_blank" rel="noopener noreferrer">xhyjs.net</a>
-              <a href="https://xhyjs.org" target="_blank" rel="noopener noreferrer">xhyjs.org</a>
-              <a href="https://xhyjs.uk" target="_blank" rel="noopener noreferrer">xhyjs.uk</a>
-              <a href="https://newhua99.com" target="_blank" rel="noopener noreferrer">newhua99.com</a>
-              <a href="mailto:URL@xhyjs.net">最新地址邮箱</a>
-            </div>
+        </section>
+
+        <div style="margin-top: 16px;">
+          <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 10px;">❓ 迁移常见问题</h3>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary class="faq-question">提交工单后需要做什么？</summary>
+              <div class="faq-answer">提交后请耐心等待，无需重复提交工单，也无需在其他渠道联系客服。处理完成后客服会在工单中直接回复使用方法。</div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-question">多长时间可以处理完成？</summary>
+              <div class="faq-answer">客服及技术人员正在按提交顺序集中处理，正常情况下会及时回复。若提交超过 24 小时未收到回复可再联系协助。</div>
+            </details>
           </div>
+        </div>
+
+        <div class="back-nav">
+          <button class="btn-back" onclick="selectState(null)">← 返回重新选择</button>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- 已迁移：最新地址发布页 -->
+    <div id="migratedView" class="dynamic-view">
+      <div class="migrated-notice-bar">
+        ✅ 如果您已经完成迁移，请直接使用以下地址访问新版站点，无需再次提交迁移工单。
+      </div>
+
+      <div class="main-portal-card">
+        <div class="portal-info">
+          <h3>新华云 官方主站入口</h3>
+          <p>迁移完成的用户请直接进入主站管理节点</p>
+        </div>
+        <a id="newSiteBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-main-site">
+          进入官方站点 →
+        </a>
+      </div>
+
+      <div class="content-panel">
+        <div class="line-header">
+          <span style="font-weight: 800; font-size: 17px;">官方最新地址</span>
+          <button class="btn-recheck" onclick="startCheck()">重新检测</button>
+        </div>
+        <div class="line-subtitle">系统正在检测可访问地址，请选择任意可用地址访问。</div>
+
+        <div class="line-grid" id="lineGrid"></div>
+
+        <div class="resource-sections">
+          <div class="resource-group">
+            <div class="resource-group-title">务必收藏</div>
+            <div class="btn-list">
+              <a href="https://url.mimy.cc/newhua" target="_blank" rel="noopener noreferrer" class="btn-resource">防失联发布页</a>
+              <a href="https://t.me/newhua999" target="_blank" rel="noopener noreferrer" class="btn-resource">频道订阅 (Telegram)</a>
+              <a href="https://t.me/newhua99" target="_blank" rel="noopener noreferrer" class="btn-resource">官方群组 (Telegram)</a>
+              <a href="https://t.me/newhua" target="_blank" rel="noopener noreferrer" class="btn-resource">商务合作</a>
+              <a href="https://ios.mimy.cc" target="_blank" rel="noopener noreferrer" class="btn-resource">福利商店</a>
+              <a href="https://help.xhyjs.de/" target="_blank" rel="noopener noreferrer" class="btn-resource">帮助文档</a>
+            </div>
+          </div>
+
+          <div class="resource-group">
+            <div class="resource-group-title">国内永久跳转</div>
+            <div class="grid-2col" style="margin-bottom: 14px;">
+              <a href="https://xhyjs.app" target="_blank" rel="noopener noreferrer" class="btn-resource">xhyjs.app</a>
+              <a href="https://xhyjs.cc" target="_blank" rel="noopener noreferrer" class="btn-resource">xhyjs.cc</a>
+              <a href="https://xhyjs.de" target="_blank" rel="noopener noreferrer" class="btn-resource">xhyjs.de</a>
+              <a href="https://xhyjs.net" target="_blank" rel="noopener noreferrer" class="btn-resource">xhyjs.net</a>
+              <a href="https://xhyjs.org" target="_blank" rel="noopener noreferrer" class="btn-resource">xhyjs.org</a>
+              <a href="https://xhyjs.uk" target="_blank" rel="noopener noreferrer" class="btn-resource">xhyjs.uk</a>
+            </div>
+
+            <div class="resource-group-title">国外永久网址</div>
+            <div class="btn-list" style="margin-bottom: 14px;">
+              <a href="https://newhua99.com" target="_blank" rel="noopener noreferrer" class="btn-resource">newhua99.com</a>
+            </div>
+
+            <div class="resource-group-title">获取最新地址邮箱</div>
+            <div class="btn-list">
+              <a href="mailto:URL@xhyjs.net" class="btn-resource">URL@xhyjs.net</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="back-nav">
+          <button class="btn-back" onclick="selectState(null)">← 返回重新选择</button>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <script>
     const OLD_SITE_URL = "https://nkjjggffyffftftghhuuxhy.2015010.xyz/";
     const NEW_SITE_URL = "https://go.xhyjs.cc";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const oldBtn = document.getElementById("oldSiteBtn");
+      const newBtn = document.getElementById("newSiteBtn");
+
+      if (oldBtn) oldBtn.href = OLD_SITE_URL;
+      if (newBtn) newBtn.href = NEW_SITE_URL;
+
+      renderLines();
+    });
+
+    function selectState(state) {
+      const unmigratedView = document.getElementById("unmigratedView");
+      const migratedView = document.getElementById("migratedView");
+      const btnUnmigrated = document.getElementById("btnUnmigrated");
+      const btnMigrated = document.getElementById("btnMigrated");
+      const heroCard = document.getElementById("heroCard");
+
+      if (state === "unmigrated") {
+        migratedView.style.display = "none";
+        unmigratedView.style.display = "block";
+        btnUnmigrated.classList.add("active");
+        btnMigrated.classList.remove("active");
+        unmigratedView.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else if (state === "migrated") {
+        unmigratedView.style.display = "none";
+        migratedView.style.display = "block";
+        btnMigrated.classList.add("active");
+        btnUnmigrated.classList.remove("active");
+        startCheck();
+        migratedView.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        unmigratedView.style.display = "none";
+        migratedView.style.display = "none";
+        btnUnmigrated.classList.remove("active");
+        btnMigrated.classList.remove("active");
+        heroCard.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
 
     const urls = [
       "https://nfghggefwerjhngbvsoq1.7788991.xyz/",
@@ -903,98 +832,76 @@
       "http://nnasdkfkuiuawhui14w14.9879876.xyz/"
     ];
 
-    document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("oldSiteBtn").href = OLD_SITE_URL;
-      document.getElementById("newSiteBtn").href = NEW_SITE_URL;
-      renderLines();
-    });
-
-    function selectState(state) {
-      const unmigrated = document.getElementById("unmigratedView");
-      const migrated = document.getElementById("migratedView");
-      const btnUnmigrated = document.getElementById("btnUnmigrated");
-      const btnMigrated = document.getElementById("btnMigrated");
-
-      const showMigrated = state === "migrated";
-      unmigrated.classList.toggle("active", !showMigrated);
-      migrated.classList.toggle("active", showMigrated);
-      btnUnmigrated.classList.toggle("active", !showMigrated);
-      btnMigrated.classList.toggle("active", showMigrated);
-      btnMigrated.classList.toggle("done", showMigrated);
-
-      if (showMigrated) startCheck();
-    }
-
     function renderLines() {
       const grid = document.getElementById("lineGrid");
       if (!grid) return;
 
-      grid.innerHTML = urls.map((url, i) => `
-        <div class="line-card" data-index="${i}" role="link" tabindex="0"
-             aria-label="打开官网地址 ${i + 1}">
-          <span class="line-name">官网地址 ${i + 1}</span>
-          <span class="line-status">待检测</span>
-        </div>
-      `).join("");
+      grid.innerHTML = "";
 
-      grid.querySelectorAll(".line-card").forEach((card) => {
-        const url = urls[Number(card.dataset.index)];
-        const open = () => window.open(url, "_blank", "noopener");
-        card.addEventListener("click", open);
-        card.addEventListener("keydown", (event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            open();
-          }
-        });
+      urls.forEach((url, i) => {
+        const card = document.createElement("div");
+        card.className = "line-card";
+        card.innerHTML = `
+          <span class="line-name">官网地址 ${i + 1}</span>
+          <span class="line-status status-pending">未检测</span>
+        `;
+        card.onclick = () => window.open(url, "_blank", "noopener");
+        grid.appendChild(card);
       });
     }
 
+    // Runs every line's connectivity check in parallel instead of one-by-one.
+    // Same outcome as before (first reachable line gets highlighted, each
+    // card shows its own result) but finishes in ~6s total instead of up to
+    // 14 x 6s = 84s in the worst case when checked sequentially.
     async function startCheck() {
-      const cards = [...document.querySelectorAll(".line-card")];
+      const cards = document.querySelectorAll(".line-card");
       if (!cards.length) return;
 
       cards.forEach((card) => {
         card.classList.remove("active");
-        const status = card.querySelector(".line-status");
-        status.textContent = "检测中";
-        status.className = "line-status";
+        const statusEl = card.querySelector(".line-status");
+        statusEl.textContent = "检测中...";
+        statusEl.className = "line-status status-pending";
       });
 
-      for (let i = 0; i < urls.length; i++) {
-        const card = cards[i];
+      let firstSuccessMarked = false;
+
+      const checkOne = async (url, card) => {
         const status = card.querySelector(".line-status");
         const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 5000);
+        const timeout = setTimeout(() => controller.abort(), 6000);
 
         try {
-          await fetch(urls[i], {
-            method: "HEAD",
-            mode: "no-cors",
-            signal: controller.signal
-          });
-          status.textContent = "可访问";
-          status.classList.add("status-success");
-          card.classList.add("active");
+          await fetch(url, { method: "HEAD", mode: "no-cors", signal: controller.signal });
+          status.textContent = "✅ 可访问";
+          status.className = "line-status status-success";
+          if (!firstSuccessMarked) {
+            firstSuccessMarked = true;
+            card.classList.add("active");
+          }
         } catch {
-          status.textContent = "无法访问";
-          status.classList.add("status-fail");
+          status.textContent = "❌ 无法访问";
+          status.className = "line-status status-fail";
         } finally {
           clearTimeout(timeout);
         }
-      }
+      };
+
+      await Promise.all(urls.map((url, i) => checkOne(url, cards[i])));
     }
   </script>
 
-  <script>
+  <!-- Crisp 客服配置 -->
+  <script type="text/javascript">
     window.$crisp = [];
     window.CRISP_WEBSITE_ID = "bac83da9-488b-4c0c-956b-4059891eb205";
     (function () {
       const d = document;
       const s = d.createElement("script");
       s.src = "https://client.crisp.chat/l.js";
-      s.async = true;
-      d.head.appendChild(s);
+      s.async = 1;
+      d.getElementsByTagName("head")[0].appendChild(s);
     })();
   </script>
 </body>
