@@ -8,9 +8,6 @@
   <link rel="shortcut icon" href="/favicon.ico" />
 
   <style>
-    /* ==========================================
-       基础样式与主题变量
-       ========================================== */
     :root {
       --bg-main: #f8fafc;
       --bg-card: #ffffff;
@@ -26,7 +23,6 @@
       --border-color: #e2e8f0;
       --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
       --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08);
-      --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.08);
       --radius: 16px;
     }
 
@@ -36,9 +32,7 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -57,7 +51,6 @@
       width: 100%;
     }
 
-    /* Header */
     .header {
       padding: 28px 0 12px;
       text-align: center;
@@ -79,9 +72,6 @@
       font-weight: 500;
     }
 
-    /* ==========================================
-       第一屏：决策卡片（柔和专业文案）
-       ========================================== */
     .hero-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -153,15 +143,16 @@
       color: var(--text-main);
     }
 
-    /* 尚未迁移 */
     .choice-btn.unmigrated {
       border-color: #fed7aa;
       background: #fff8f6;
     }
+
     .choice-btn.unmigrated .btn-tag {
       background: #ffedd5;
       color: var(--accent-orange);
     }
+
     .choice-btn.unmigrated:hover,
     .choice-btn.unmigrated.active {
       border-color: var(--accent-orange);
@@ -170,15 +161,16 @@
       transform: translateY(-2px);
     }
 
-    /* 已经迁移 */
     .choice-btn.migrated {
       border-color: #a7f3d0;
       background: #f6fbf9;
     }
+
     .choice-btn.migrated .btn-tag {
       background: #d1fae5;
       color: var(--accent-green);
     }
+
     .choice-btn.migrated:hover,
     .choice-btn.migrated.active {
       border-color: var(--accent-green);
@@ -187,9 +179,6 @@
       transform: translateY(-2px);
     }
 
-    /* ==========================================
-       动态展现区域
-       ========================================== */
     .dynamic-view {
       display: none;
       animation: fadeIn 0.35s ease-in-out;
@@ -223,9 +212,6 @@
       gap: 8px;
     }
 
-    /* ==========================================
-       【未迁移视图】优化样式
-       ========================================== */
     .action-focus-box {
       background: #fff7ed;
       border: 2px dashed #f97316;
@@ -295,7 +281,6 @@
       color: var(--text-muted);
     }
 
-    /* 工单规范强强调区域 */
     .ticket-warning-card {
       background: #eff6ff;
       border: 1px solid #bfdbfe;
@@ -314,112 +299,59 @@
       gap: 6px;
     }
 
-    .ticket-choice-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      background: #fff;
-      padding: 16px;
-      border-radius: 8px;
-      border: 1px dashed #93c5fd;
-      margin: 10px 0 12px;
-    }
-
-    .ticket-letter-box {
-      background: var(--primary-light);
-      color: var(--primary);
-      font-size: 26px;
-      font-weight: 900;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      border: 1px solid #93c5fd;
-    }
-
-    .ticket-or {
-      font-weight: 700;
-      color: var(--text-muted);
+    .ticket-info {
       font-size: 14px;
+      color: var(--text-main);
+      margin-top: 6px;
     }
 
-    .ticket-strict-tip {
-      color: #dc2626;
-      font-size: 13px;
-      font-weight: 700;
-      text-align: center;
-      background: #fef2f2;
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px solid #fee2e2;
-    }
-
-    /* 视觉化 A/B 补偿卡片 */
-    .compensation-wrapper {
+    .campaign-card {
+      background: linear-gradient(135deg, #fff7ed, #fffbeb);
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      padding: 22px;
       margin-bottom: 28px;
     }
 
-    .compensation-header-title {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .comp-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+    .campaign-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #9a3412;
       margin-bottom: 10px;
     }
 
-    .comp-card {
-      background: var(--bg-main);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 18px;
-      text-align: center;
-      position: relative;
+    .campaign-intro {
+      font-size: 14px;
+      color: #475569;
+      margin-bottom: 16px;
     }
 
-    .comp-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: var(--text-main);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 800;
-      width: 22px;
-      height: 22px;
+    .campaign-details {
+      display: grid;
+      gap: 10px;
+    }
+
+    .campaign-detail {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #ffedd5;
+      border-radius: 9px;
+      padding: 12px 14px;
+      font-size: 14px;
+    }
+
+    .campaign-detail strong { color: #9a3412; }
+
+    .campaign-code {
+      display: inline-block;
+      padding: 2px 10px;
       border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .comp-value {
-      font-size: 24px;
+      background: #ffedd5;
+      color: #9a3412;
+      font-size: 18px;
       font-weight: 900;
-      color: var(--accent-orange);
-      margin: 4px 0;
+      letter-spacing: 1px;
     }
 
-    .comp-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    .comp-foot-tip {
-      font-size: 12px;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    /* FAQ (默认常开样式) */
     .faq-list {
       display: flex;
       flex-direction: column;
@@ -447,9 +379,6 @@
       line-height: 1.5;
     }
 
-    /* ==========================================
-       【已迁移视图】样式
-       ========================================== */
     .migrated-notice-bar {
       background: #f0fdf4;
       border: 1px solid #bbf7d0;
@@ -584,7 +513,6 @@
 
     .btn-resource:hover { border-color: var(--primary); color: var(--primary); }
 
-    /* 返回按钮组件 */
     .back-nav {
       text-align: center;
       margin-top: 32px;
@@ -612,12 +540,17 @@
       color: var(--text-main);
     }
 
-    /* 响应式 */
     @media (max-width: 768px) {
-      .decision-grid, .steps-grid, .comp-cards-grid, .resource-sections, .line-grid {
+      .decision-grid, .steps-grid, .resource-sections, .line-grid {
         grid-template-columns: 1fr;
       }
-      .main-portal-card { flex-direction: column; text-align: center; gap: 16px; }
+
+      .main-portal-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+      }
+
       .btn-main-site { width: 100%; }
       .hero-card { padding: 28px 16px; }
       .content-panel { padding: 20px 16px; }
@@ -626,7 +559,6 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header class="header">
     <a href="#" class="brand">新华云</a>
     <div class="brand-sub">官方最新地址发布页</div>
@@ -634,20 +566,17 @@
 
   <main class="container">
 
-    <!-- 第一屏：柔和专业的决策卡片 -->
     <div id="heroCard" class="hero-card">
       <span class="notice-badge">⚠️ 重要通知</span>
       <h1 class="hero-title">近期由于网络环境变化，新华云已进行站点迁移。</h1>
       <p class="hero-subtitle">请问您是否已经完成迁移？</p>
 
       <div class="decision-grid">
-        <!-- 选项 A：尚未迁移 -->
         <button id="btnUnmigrated" class="choice-btn unmigrated" onclick="selectState('unmigrated')">
           <span class="btn-tag">尚未迁移</span>
           <span class="btn-text">🟠 我还没有办理迁移</span>
         </button>
 
-        <!-- 选项 B：已经迁移 -->
         <button id="btnMigrated" class="choice-btn migrated" onclick="selectState('migrated')">
           <span class="btn-tag">已经迁移</span>
           <span class="btn-text">🟢 我已经完成迁移</span>
@@ -655,25 +584,20 @@
       </div>
     </div>
 
-
-    <!-- ==========================================
-         视图一：【未迁移】专属指导
-         ========================================== -->
+    <!-- 尚未迁移：保留老站工单办理流程 -->
     <div id="unmigratedView" class="dynamic-view">
       <div class="content-panel">
         <div class="panel-header">
           <h2 class="panel-title" style="color: var(--accent-orange);">📋 迁移办理指引</h2>
         </div>
 
-        <!-- 核心行动提示与醒目按钮 -->
         <div class="action-focus-box">
-          <div class="action-focus-title">👉 您现在只需要前往老站提交一份迁移工单即可</div>
-          <a id="oldSiteBtn" href="#" target="_blank" class="btn-old-site-main">
+          <div class="action-focus-title">👉 请前往老站提交一份迁移工单</div>
+          <a id="oldSiteBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-old-site-main">
             前往老站办理迁移 →
           </a>
         </div>
 
-        <!-- 4 步辅助流程 -->
         <div class="steps-grid">
           <div class="step-item">
             <div class="step-num">01</div>
@@ -688,7 +612,7 @@
           <div class="step-item">
             <div class="step-num">03</div>
             <div class="step-title">填写申请</div>
-            <div class="step-desc">选择下方规范内容</div>
+            <div class="step-desc">等级选择“高”，主题填写“迁移”</div>
           </div>
           <div class="step-item">
             <div class="step-num">04</div>
@@ -697,43 +621,31 @@
           </div>
         </div>
 
-        <!-- 工单格式强提醒 -->
         <div class="ticket-warning-card">
           <div class="ticket-warning-title">
-            📌 工单填写要求（等级选择【高】，主题填写【迁移】）
+            📌 工单填写要求
           </div>
-          <p style="font-size: 13px; color: var(--text-muted);">请在工单内容中仅填入您选择的补偿方案字母：</p>
-          
-          <div class="ticket-choice-container">
-            <div class="ticket-letter-box">A</div>
-            <span class="ticket-or">或</span>
-            <div class="ticket-letter-box">B</div>
-          </div>
-
-          <div class="ticket-strict-tip">
-            ⚠️ 只能二选一，请勿填写任何其他说明文字（例如“我要迁移选择A谢谢”等）
-          </div>
+          <p class="ticket-info">等级请选择【高】，主题填写【迁移】。</p>
+          <p class="ticket-info">请在工单中说明需要办理站点迁移，并按原流程提交工单。</p>
         </div>
 
-        <!-- 视觉化 A/B 补偿方案 -->
-        <div class="compensation-wrapper">
-          <div class="compensation-header-title">🎁 迁移专属补偿方案：</div>
-          <div class="comp-cards-grid">
-            <div class="comp-card">
-              <div class="comp-badge">A</div>
-              <div class="comp-value">+100GB</div>
-              <div class="comp-desc">额外赠送流量</div>
-            </div>
-            <div class="comp-card">
-              <div class="comp-badge">B</div>
-              <div class="comp-value">+7天</div>
-              <div class="comp-desc">原订单有效期延长</div>
+        <!-- 原 A/B 补偿内容已替换为当前活动 -->
+        <section class="campaign-card" aria-labelledby="campaignTitle">
+          <h3 class="campaign-title" id="campaignTitle">🎉 国庆中秋限时 85 折优惠</h3>
+          <p class="campaign-intro">
+            感谢大家一直以来的支持与理解！恰逢双节到来，新站现已正式上线并开启全场限时折扣，
+            全新线路架构全面升级，为您提供更稳定、更顺畅的使用体验。
+          </p>
+          <div class="campaign-details">
+            <div class="campaign-detail"><strong>活动时间：</strong>9/19 - 10/15</div>
+            <div class="campaign-detail"><strong>优惠折扣：</strong>全场套餐 85 折（仅限新站，体验套餐除外）</div>
+            <div class="campaign-detail"><strong>优惠代码：</strong><span class="campaign-code">85</span></div>
+            <div class="campaign-detail">
+              <strong>使用方法：</strong>选购套餐后，在结算页面输入优惠码，点击「验证」即可享受折扣。
             </div>
           </div>
-          <div class="comp-foot-tip">二选一，请勿重复选择</div>
-        </div>
+        </section>
 
-        <!-- FAQ (自动展开) -->
         <div style="margin-top: 32px;">
           <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px;">❓ 迁移常见问题</h3>
           <div class="faq-list">
@@ -748,36 +660,29 @@
           </div>
         </div>
 
-        <!-- 返回选择 -->
         <div class="back-nav">
           <button class="btn-back" onclick="selectState(null)">← 返回重新选择</button>
         </div>
       </div>
     </div>
 
-
-    <!-- ==========================================
-         视图二：【已迁移】专属发布页
-         ========================================== -->
+    <!-- 已迁移：最新地址发布页 -->
     <div id="migratedView" class="dynamic-view">
-      <!-- 提示文案 -->
       <div class="migrated-notice-bar">
         ✅ 如果您已经完成迁移，请直接使用以下地址访问新版站点，无需再次提交迁移工单。
       </div>
 
-      <!-- 官方主站卡片 -->
       <div class="main-portal-card">
         <div class="portal-info">
           <h3>新华云 官方主站入口</h3>
           <p>迁移完成的用户请直接进入主站管理节点</p>
         </div>
-        <a id="newSiteBtn" href="#" target="_blank" class="btn-main-site">
+        <a id="newSiteBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-main-site">
           进入官方站点 →
         </a>
       </div>
 
       <div class="content-panel">
-        <!-- 官方最新地址 -->
         <div class="line-header">
           <span style="font-weight: 800; font-size: 17px;">官方最新地址</span>
           <button class="btn-recheck" onclick="startCheck()">重新检测</button>
@@ -786,36 +691,33 @@
 
         <div class="line-grid" id="lineGrid"></div>
 
-        <!-- 资源导航列表 -->
         <div class="resource-sections">
-          <!-- 务必收藏 -->
           <div class="resource-group">
             <div class="resource-group-title">务必收藏</div>
             <div class="btn-list">
-              <a href="https://url.mimy.cc/newhua" target="_blank" class="btn-resource">防失联发布页</a>
-              <a href="https://t.me/newhua999" target="_blank" class="btn-resource">频道订阅 (Telegram)</a>
-              <a href="https://t.me/newhua99" target="_blank" class="btn-resource">官方群组 (Telegram)</a>
-              <a href="https://t.me/newhua" target="_blank" class="btn-resource">商务合作</a>
-              <a href="https://ios.mimy.cc" target="_blank" class="btn-resource">福利商店</a>
-              <a href="https://help.xhyjs.de/" target="_blank" class="btn-resource">帮助文档</a>
+              <a href="https://url.mimy.cc/newhua" target="_blank" rel="noopener noreferrer" class="btn-resource">防失联发布页</a>
+              <a href="https://t.me/newhua999" target="_blank" rel="noopener noreferrer" class="btn-resource">频道订阅 (Telegram)</a>
+              <a href="https://t.me/newhua99" target="_blank" rel="noopener noreferrer" class="btn-resource">官方群组 (Telegram)</a>
+              <a href="https://t.me/newhua" target="_blank" rel="noopener noreferrer" class="btn-resource">商务合作</a>
+              <a href="https://ios.mimy.cc" target="_blank" rel="noopener noreferrer" class="btn-resource">福利商店</a>
+              <a href="https://help.xhyjs.de/" target="_blank" rel="noopener noreferrer" class="btn-resource">帮助文档</a>
             </div>
           </div>
 
-          <!-- 备用跳转 -->
           <div class="resource-group">
             <div class="resource-group-title">国内永久跳转</div>
             <div class="grid-2col" style="margin-bottom: 14px;">
-              <a href="https://xhyjs.app" target="_blank" class="btn-resource">xhyjs.app</a>
-              <a href="https://xhyjs.cc" target="_blank" class="btn-resource">xhyjs.cc</a>
-              <a href="https://xhyjs.de" target="_blank" class="btn-resource">xhyjs.de</a>
-              <a href="https://xhyjs.net" target="_blank" class="btn-resource">xhyjs.net</a>
-              <a href="https://xhyjs.org" target="_blank" class="btn-resource">xhyjs.org</a>
-              <a href="https://xhyjs.uk" target="_blank" class="btn-resource">xhyjs.uk</a>
+              <a href="https://xhyjs.app" target="_blank" rel="noopener noreferrer" class="btn-resource">xhyjs.app</a>
+              <a href="https://xhyjs.cc" target="_blank" rel="noopener noreferrer" class="btn-resource">xhyjs.cc</a>
+              <a href="https://xhyjs.de" target="_blank" rel="noopener noreferrer" class="btn-resource">xhyjs.de</a>
+              <a href="https://xhyjs.net" target="_blank" rel="noopener noreferrer" class="btn-resource">xhyjs.net</a>
+              <a href="https://xhyjs.org" target="_blank" rel="noopener noreferrer" class="btn-resource">xhyjs.org</a>
+              <a href="https://xhyjs.uk" target="_blank" rel="noopener noreferrer" class="btn-resource">xhyjs.uk</a>
             </div>
 
             <div class="resource-group-title">国外永久网址</div>
             <div class="btn-list" style="margin-bottom: 14px;">
-              <a href="https://newhua99.com" target="_blank" class="btn-resource">newhua99.com</a>
+              <a href="https://newhua99.com" target="_blank" rel="noopener noreferrer" class="btn-resource">newhua99.com</a>
             </div>
 
             <div class="resource-group-title">获取最新地址邮箱</div>
@@ -825,7 +727,6 @@
           </div>
         </div>
 
-        <!-- 返回选择 -->
         <div class="back-nav">
           <button class="btn-back" onclick="selectState(null)">← 返回重新选择</button>
         </div>
@@ -835,21 +736,19 @@
   </main>
 
   <script>
-    // ========================================
-    // 集中地址配置
-    // ========================================
     const OLD_SITE_URL = "https://nkjjggffyffftftghhuuxhy.2015010.xyz/";
     const NEW_SITE_URL = "https://go.xhyjs.cc";
 
     document.addEventListener("DOMContentLoaded", () => {
       const oldBtn = document.getElementById("oldSiteBtn");
       const newBtn = document.getElementById("newSiteBtn");
+
       if (oldBtn) oldBtn.href = OLD_SITE_URL;
       if (newBtn) newBtn.href = NEW_SITE_URL;
+
       renderLines();
     });
 
-    // 核心视图切换逻辑
     function selectState(state) {
       const unmigratedView = document.getElementById("unmigratedView");
       const migratedView = document.getElementById("migratedView");
@@ -857,38 +756,28 @@
       const btnMigrated = document.getElementById("btnMigrated");
       const heroCard = document.getElementById("heroCard");
 
-      if (state === 'unmigrated') {
+      if (state === "unmigrated") {
         migratedView.style.display = "none";
         unmigratedView.style.display = "block";
-
         btnUnmigrated.classList.add("active");
         btnMigrated.classList.remove("active");
-
         unmigratedView.scrollIntoView({ behavior: "smooth", block: "start" });
-
-      } else if (state === 'migrated') {
+      } else if (state === "migrated") {
         unmigratedView.style.display = "none";
         migratedView.style.display = "block";
-
         btnMigrated.classList.add("active");
         btnUnmigrated.classList.remove("active");
-
         startCheck();
         migratedView.scrollIntoView({ behavior: "smooth", block: "start" });
-
       } else {
-        // null: 返回初始选择状态
         unmigratedView.style.display = "none";
         migratedView.style.display = "none";
-
         btnUnmigrated.classList.remove("active");
         btnMigrated.classList.remove("active");
-
         heroCard.scrollIntoView({ behavior: "smooth", block: "center" });
       }
     }
 
-    // 官网地址列表
     const urls = [
       "https://nfghggefwerjhngbvsoq1.7788991.xyz/",
       "https://nkjjfusuiuhfdfjjfjs2.7897891.xyz/",
@@ -909,7 +798,9 @@
     function renderLines() {
       const grid = document.getElementById("lineGrid");
       if (!grid) return;
+
       grid.innerHTML = "";
+
       urls.forEach((url, i) => {
         const card = document.createElement("div");
         card.className = "line-card";
@@ -917,7 +808,7 @@
           <span class="line-name">官网地址 ${i + 1}</span>
           <span class="line-status status-pending">未检测</span>
         `;
-        card.onclick = () => window.open(url, "_blank");
+        card.onclick = () => window.open(url, "_blank", "noopener");
         grid.appendChild(card);
       });
     }
@@ -926,9 +817,9 @@
       const cards = document.querySelectorAll(".line-card");
       if (!cards.length) return;
 
-      for (let c of cards) {
-        c.classList.remove("active");
-        const statusEl = c.querySelector(".line-status");
+      for (const card of cards) {
+        card.classList.remove("active");
+        const statusEl = card.querySelector(".line-status");
         statusEl.textContent = "检测中...";
         statusEl.className = "line-status status-pending";
       }
@@ -936,11 +827,17 @@
       for (let i = 0; i < urls.length; i++) {
         const card = cards[i];
         const status = card.querySelector(".line-status");
+
         try {
           const controller = new AbortController();
           const timeout = setTimeout(() => controller.abort(), 6000);
-          await fetch(urls[i], { method: "HEAD", mode: "no-cors", signal: controller.signal });
+          await fetch(urls[i], {
+            method: "HEAD",
+            mode: "no-cors",
+            signal: controller.signal
+          });
           clearTimeout(timeout);
+
           status.textContent = "✅ 可访问";
           status.className = "line-status status-success";
           card.classList.add("active");
@@ -958,8 +855,8 @@
     window.$crisp = [];
     window.CRISP_WEBSITE_ID = "bac83da9-488b-4c0c-956b-4059891eb205";
     (function () {
-      d = document;
-      s = d.createElement("script");
+      const d = document;
+      const s = d.createElement("script");
       s.src = "https://client.crisp.chat/l.js";
       s.async = 1;
       d.getElementsByTagName("head")[0].appendChild(s);
