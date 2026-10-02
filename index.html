@@ -850,6 +850,240 @@
     }
   </script>
 
+  <!-- 客服与帮助：打字机助手模块（整段粘贴到 Crisp 配置注释之前） -->
+<style>
+  .ca{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",Roboto,sans-serif;letter-spacing:.02em;background:var(--bg-card,#fff);border:1px solid var(--border-color,#e2e8f0);border-radius:14px;box-shadow:var(--shadow-sm,0 1px 3px rgba(0,0,0,.05));overflow:hidden;font-size:16.5px;line-height:1.9;margin:8px 0 96px;color:var(--text-main,#0f172a)}
+  .ca button,.ca a{font:inherit}
+  .ca-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;row-gap:2px;padding:16px 28px;border-bottom:1px solid var(--border-color,#e2e8f0);background:#f8fafc;font-size:15px;font-weight:600}
+  .ca-dot{width:8px;height:8px;border-radius:50%;background:var(--accent-green,#059669);box-shadow:0 0 0 3px rgba(5,150,105,.14)}
+  .ca-hours{flex:1 1 230px;min-width:0;margin-left:4px;font-size:13px;font-weight:400;line-height:1.5;color:var(--text-muted,#64748b)}
+  .ca-state{font-size:13px;font-weight:500;color:var(--text-muted,#64748b)}
+  .ca-nav{display:flex}
+  .ca-ctl{display:flex;align-items:center;gap:4px}
+  .ca-pn{width:32px;height:32px;padding:0;border:1px solid var(--border-color,#e2e8f0);border-radius:50%;background:#fff;color:var(--text-main,#0f172a);font-size:17px;line-height:1;cursor:pointer;transition:border-color .2s,color .2s}
+  .ca-pn:hover{border-color:var(--primary,#2563eb);color:var(--primary,#2563eb)}
+  .ca-pn:focus-visible{outline:2px solid var(--primary,#2563eb);outline-offset:1px}
+  .ca-dot.off{background:#94a3b8;box-shadow:0 0 0 3px rgba(148,163,184,.2)}
+  .ca-x{font-weight:600;color:#dc2626}
+  .ca-bub.bad{background:#fef2f2;border-color:#fecaca}
+  .ca-nav button{position:relative;width:14px;height:22px;border:0;background:none;cursor:pointer}
+  .ca-nav button::before{content:"";position:absolute;left:4px;top:8px;width:6px;height:6px;border-radius:50%;background:#cbd5e1;transition:background .2s}
+  .ca-nav button[aria-current="true"]::before{background:var(--primary,#2563eb)}
+  .ca-nav button:focus-visible{outline:2px solid var(--primary,#2563eb);outline-offset:1px;border-radius:4px}
+  .ca-stage{position:relative;display:grid;padding:32px 34px 16px;min-height:360px}
+  .ca-live,.ca-ghost{grid-area:1/1}
+  .ca-ghost{display:grid;visibility:hidden;pointer-events:none}
+  .ca-ghost>div{grid-area:1/1}
+  .ca-live{transition:opacity .35s ease,transform .35s ease}
+  .ca-live.out{opacity:0;transform:translateY(-4px)}
+  .ca-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .ca-l{white-space:pre-wrap;margin-bottom:8px}
+  .ca-h{font-size:19px;font-weight:700}
+  .ca-m{font-weight:600;color:var(--primary,#2563eb)}
+  .ca-g,.ca-c{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px;color:var(--text-muted,#64748b)}
+  .ca-c{display:inline-block;margin:0 16px 4px 0}
+  .ca-l.ca-g{margin:10px 0 4px}
+  .ca-live.pop{animation:caIn .3s ease}
+  .ca-ck{margin-right:.5em;color:var(--accent-green,#059669)}
+  .ca-k>span:first-child{font-weight:600}
+  .ca-sub{color:var(--text-muted,#64748b);font-size:15px}
+  .ca-sub:not(:empty){margin-left:.6em}
+  .ca-bub{width:fit-content;max-width:92%;margin:0 0 6px auto;padding:10px 16px;white-space:pre-wrap;background:var(--primary-light,#eff6ff);border:1px solid #dbeafe;border-radius:12px 12px 4px 12px}
+  .ca-in{animation:caIn .4s ease both}
+  @keyframes caIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .ca-cur{color:var(--primary,#2563eb);margin-left:1px}
+  .ca-cur.idle{animation:caBlink 1.2s steps(1) infinite}
+  @keyframes caBlink{50%{opacity:0}}
+  .ca-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:10px 28px 22px;font-size:12px;color:var(--text-muted,#64748b)}
+  .ca-act{display:flex;gap:6px}
+  .ca-act a,.ca-act button{padding:4px 12px;border:1px solid var(--border-color,#e2e8f0);border-radius:999px;background:#fff;color:var(--text-main,#0f172a);font-size:12px;text-decoration:none;cursor:pointer;transition:border-color .2s,color .2s}
+  .ca-act a:hover,.ca-act button:hover{border-color:var(--primary,#2563eb);color:var(--primary,#2563eb)}
+  @media (min-width:1760px){
+    .ca{position:fixed;left:max(24px,calc((100vw - 900px)/2 - 420px));top:100px;width:396px;margin:0;z-index:5}
+  }
+  @media (max-width:600px){
+    .ca{font-size:15px}
+    .ca-bar{padding:14px 18px}
+    .ca-stage{padding:22px 20px 10px;min-height:300px}
+    .ca-foot{padding:8px 18px 18px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .ca *{animation:none!important;transition:none!important}
+  }
+</style>
+
+<aside class="ca" id="csAssist" aria-label="客服与帮助">
+  <div class="ca-bar">
+    <span class="ca-dot" id="caDot"></span>客服助手<span class="ca-state" id="caState">在线</span>
+    <span class="ca-hours">🕘 在线时间：9:00–23:00，欢迎咨询。其余时间请等待</span>
+  </div>
+  <div class="ca-stage">
+    <div class="ca-live" id="caLive" aria-hidden="true"></div>
+    <div class="ca-ghost" id="caGhost" aria-hidden="true"></div>
+    <div class="ca-sr" id="caSr"></div>
+  </div>
+  <div class="ca-foot">
+    <span class="ca-ctl">
+      <button type="button" class="ca-pn" id="caPrev" aria-label="上一条">‹</button>
+      <span class="ca-nav" id="caNav"></span>
+      <button type="button" class="ca-pn" id="caNext" aria-label="下一条">›</button>
+    </span>
+    <span class="ca-act">
+      <a href="https://help.xhyjs.de/" target="_blank" rel="noopener noreferrer">帮助文档</a>
+      <button type="button" id="caOpen">打开客服</button>
+    </span>
+  </div>
+</aside>
+
+<script>
+(function () {
+  // 块类型：t=打字文本(第3项: h标题/m强调/g日志)  k=标签+示例  c=✓日志项  b=聊天气泡
+  var S = [
+    [['t','💬 需要帮助？','h'],['t','点击右下角客服图标即可联系客服。'],['t','有问题请直接描述即可，\n无需发送「你好」「在吗」等寒暄消息。'],['t','提供的信息越完整，\n我们解决问题的速度就越快。','m']],
+    [['t','🔄 如果遇到无法使用的问题，','h'],['t','建议先删除当前订阅，\n然后前往官网重新导入订阅。'],['t','具体操作：登录官网后，\n仪表盘 → 一键订阅 → 复制订阅地址 →\n导入你的代理软件','m'],['t','这个操作可以解决大量常见问题。'],['t','如果重新导入后仍然无法使用，\n再联系客服反馈问题。']],
+    [['t','📚 遇到使用问题？','h'],['t','客户端安装、配置、使用等常见问题，\n使用文档中都有详细教程。'],['t','建议先查阅文档，\n通常可以更快解决问题。','m']],
+    [['t','🛠️ 仍然无法解决？','h'],['t','请直接发送你的问题，\n并尽量一次性提供以下信息：'],['k','📍 所在城市','例如：东京、上海、广州'],['k','📱 使用设备','例如：iPhone、Android、Windows、Mac'],['k','🌐 网络类型','例如：5G 流量、家庭 Wi-Fi、公司网络'],['k','🧩 代理软件','例如：Shadowrocket、Clash 等'],['k','📸 相关截图','请尽量完整，并标明出现问题的位置'],['t','有多个问题请分别提供对应的截图，\n不要只发一张看不出问题所在的局部截图。'],['t','正在收集问题信息...','g'],['c','所在城市'],['c','使用设备'],['c','网络类型'],['c','代理软件'],['c','问题截图'],['t','信息越完整，处理越快。','m']],
+    [['t','❌ 无效提问示例','h'],['b','你好','x'],['b','在吗','x'],['b','无法使用','x'],['t','🚫 信息太少，我们无法判断问题。','x']],
+    [['t','📋 有效提问示例','h'],['b','我目前人在广州，\n使用 iPhone，\n5G 流量，\n使用 Shadowrocket。'],['b','删除订阅并重新导入后，\n节点仍然无法连接。'],['b','附上相关错误截图。'],['t','✅ 这样的问题，我们可以更快定位。','m']],
+    [['t','⏳ 客服暂时没有回复？','h'],['t','请稍等片刻。'],['t','如果在线客服长时间没有回复，\n可以前往官网提交工单，\n我们会继续处理。'],['t','提交工单时也请直接描述问题，\n无需发送「你好」「在吗」等寒暄消息。']]
+  ];
+
+  var root = document.getElementById('csAssist'),
+      live = document.getElementById('caLive'),
+      ghost = document.getElementById('caGhost'),
+      sr = document.getElementById('caSr'),
+      nav = document.getElementById('caNav'),
+      RM = matchMedia('(prefers-reduced-motion: reduce)').matches,
+      tok = 0, curI = 0,
+      cur = document.createElement('span');
+  cur.textContent = '▌';
+
+  function mk(b, full) {
+    var t = b[0], e = document.createElement('div'), a = document.createElement('span'), s = null;
+    if (t === 'c') {
+      e.className = 'ca-c';
+      var ck = document.createElement('span'); ck.className = 'ca-ck'; ck.textContent = '✓'; e.appendChild(ck);
+    } else if (t === 'b') {
+      e.className = 'ca-bub' + (b[2] === 'x' ? ' bad' : '');
+    } else {
+      e.className = 'ca-l' + (t === 't' && b[2] ? ' ca-' + b[2] : '') + (t === 'k' ? ' ca-k' : '');
+    }
+    e.appendChild(a);
+    if (t === 'k') { s = document.createElement('span'); s.className = 'ca-sub'; e.appendChild(s); }
+    if (full) { a.textContent = b[1]; if (s) s.textContent = b[2]; }
+    return { e: e, a: a, s: s };
+  }
+
+  // 可暂停、可取消的等待（标签页隐藏或鼠标悬停时暂停计时）
+  function wait(ms, my) {
+    return new Promise(function (res) {
+      var t = 0;
+      (function tick() {
+        if (tok !== my) return res(false);
+        if (t >= ms) return res(true);
+        if (!document.hidden) t += 10;
+        setTimeout(tick, 10);
+      })();
+    });
+  }
+
+  async function scene(i, my, manual) {
+    var fast = RM;
+    live.className = 'ca-live';
+    live.textContent = '';
+    var sc = S[i];
+    for (var j = 0; j < sc.length; j++) {
+      var b = sc[j], ty = b[0], o = mk(b, fast);
+      live.appendChild(o.e);
+      o.e.appendChild(cur);
+      cur.className = fast ? 'ca-cur idle' : 'ca-cur idle';
+      if (fast) continue;
+      if (ty === 'c' || ty === 'b') {
+        o.a.textContent = b[1];
+        o.e.classList.add('ca-in');
+        if (!await wait(ty === 'c' ? 180 : 360, my)) return false;
+        continue;
+      }
+      cur.className = 'ca-cur';
+      var segs = ty === 'k' ? [[o.a, b[1]], [o.s, b[2]]] : [[o.a, b[1]]];
+      for (var q = 0; q < segs.length; q++) {
+        var ch = Array.from(segs[q][1]);
+        for (var c = 0; c < ch.length; c++) {
+          segs[q][0].textContent += ch[c];
+          if (ch[c] === '\uFE0F') continue;
+          var d = 18;
+          if ('，、：'.indexOf(ch[c]) > -1) d += 70;
+          else if ('。？！\n'.indexOf(ch[c]) > -1) d += 120;
+          if (!await wait(d, my)) return false;
+        }
+      }
+      cur.className = 'ca-cur idle';
+      if (!await wait(110, my)) return false;
+    }
+    if (!await wait(RM ? 7000 : (manual ? 3000 : 2000), my)) return false;
+    live.classList.add('out');
+    return await wait(RM ? 0 : 400, my);
+  }
+
+  async function loop(i, manual) {
+    var my = ++tok;
+    while (tok === my) {
+      curI = i;
+      var dots = nav.children;
+      for (var k = 0; k < dots.length; k++) dots[k].setAttribute('aria-current', k === i ? 'true' : 'false');
+      if (!await scene(i, my, manual)) return;
+      manual = false;
+      i = (i + 1) % S.length;
+    }
+  }
+
+  // 占位（取最高一条的高度，避免切换时页面跳动）+ 读屏文本 + 导航点
+  S.forEach(function (sc, i) {
+    var g = document.createElement('div');
+    sc.forEach(function (b) { g.appendChild(mk(b, true).e); });
+    ghost.appendChild(g);
+    var p = document.createElement('p');
+    p.textContent = sc.map(function (b) { return b[1] + (b[0] === 'k' ? ' ' + b[2] : ''); }).join(' ');
+    sr.appendChild(p);
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.setAttribute('aria-label', '第 ' + (i + 1) + ' 条提示');
+    btn.onclick = function () { loop(i, true); };
+    nav.appendChild(btn);
+  });
+
+  // 桌面宽屏：固定在左侧空白区；其他：放在主内容最下方
+  var mq = matchMedia('(min-width:1760px)');
+  function place() { (mq.matches ? document.body : document.querySelector('main')).appendChild(root); }
+  place();
+  mq.addEventListener('change', place);
+
+
+  // 仅在用户点击时打开 Crisp，不会自动弹出
+  document.getElementById('caOpen').onclick = function () {
+    try { window.$crisp.push(['do', 'chat:open']); } catch (e) {}
+  };
+
+  document.getElementById('caPrev').onclick = function () { loop((curI - 1 + S.length) % S.length, true); };
+  document.getElementById('caNext').onclick = function () { loop((curI + 1) % S.length, true); };
+
+  // 按北京时间显示是否在服务时间内（9:00–23:00）
+  var dotEl = document.getElementById('caDot'), stEl = document.getElementById('caState');
+  function hours() {
+    var h;
+    try { h = +new Intl.DateTimeFormat('en-GB', { hour: 'numeric', hour12: false, timeZone: 'Asia/Shanghai' }).format(new Date()); }
+    catch (e) { h = new Date().getHours(); }
+    var on = h >= 9 && h < 23;
+    dotEl.classList.toggle('off', !on);
+    stEl.textContent = on ? '在线' : '暂不在线';
+  }
+  hours(); setInterval(hours, 60000);
+
+  loop(0);
+})();
+</script>
+<!-- /客服与帮助 -->
+
   <!-- Crisp 客服配置 -->
   <script type="text/javascript">
     window.$crisp = [];
