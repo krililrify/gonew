@@ -7,6 +7,195 @@
   <meta name="description" content="新华云官方最新地址发布页。">
   <link rel="shortcut icon" href="/favicon.ico" />
 
+  <!-- ===== 浏览器识别 / 微信·QQ 内置浏览器拦截（须放在 head 最前面，尽早执行）===== -->
+  <style id="xh-guard-css">
+    /* 被拦截时：隐藏 body 下除拦截页以外的所有内容 */
+    html.xh-blocked body > *:not(#xhBlock) { display: none !important; }
+    #xhBlock { display: none; }
+    html.xh-blocked #xhBlock { display: flex; }
+
+    .xh-block {
+      position: fixed; inset: 0; z-index: 2147483000;
+      align-items: center; justify-content: center;
+      padding: 24px; overflow: auto;
+      background: rgba(15, 23, 42, 0.62);
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+    }
+    .xh-block-card {
+      position: relative; width: 100%; max-width: 440px; margin: auto;
+      background: #fff; border-radius: 20px; padding: 32px 26px 26px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.35);
+      text-align: center; color: #0f172a;
+      animation: xhPop .35s ease both;
+    }
+    .xh-block-icon {
+      width: 68px; height: 68px; margin: 0 auto 16px; border-radius: 50%;
+      background: #eff6ff; color: #2563eb; display: flex; align-items: center; justify-content: center;
+    }
+    .xh-block-title { font-size: 22px; font-weight: 800; line-height: 1.4; margin-bottom: 10px; }
+    .xh-block-text { font-size: 15px; line-height: 1.7; color: #64748b; margin-bottom: 20px; }
+    .xh-block-steps { list-style: none; text-align: left; display: grid; gap: 10px; margin-bottom: 18px; }
+    .xh-block-steps li {
+      display: flex; gap: 12px; align-items: flex-start;
+      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 14px;
+      font-size: 15px; line-height: 1.6;
+    }
+    .xh-block-num {
+      flex: none; width: 24px; height: 24px; border-radius: 50%;
+      background: #2563eb; color: #fff; font-size: 13px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+    .xh-block-dots { display: inline-block; padding: 0 6px; border-radius: 6px; background: #e2e8f0; font-weight: 800; letter-spacing: 1px; }
+    .xh-block-rec { font-size: 14px; color: #64748b; line-height: 1.7; }
+    .xh-block-rec b { color: #2563eb; font-weight: 700; }
+    /* 仅为指示方向的箭头，不可点击 */
+    .xh-block-arrow {
+      position: fixed; top: calc(10px + env(safe-area-inset-top, 0px)); right: 18px;
+      color: #fff; pointer-events: none; animation: xhBounce 1.3s ease-in-out infinite;
+    }
+
+    /* ===== 独立浏览器推荐弹窗（提示但不拦截）===== */
+    .xh-notice {
+      position: fixed; inset: 0; z-index: 2147482000;
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+      background: rgba(15, 23, 42, 0.45); animation: xhFade .25s ease both;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+      transition: opacity .2s ease;
+    }
+    .xh-notice.xh-out { opacity: 0; }
+    .xh-notice-card {
+      width: 100%; max-width: 420px; max-height: 100%; overflow: auto;
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 26px 24px 22px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18); color: #0f172a;
+      animation: xhPop .3s ease both;
+    }
+    .xh-notice-title { font-size: 19px; font-weight: 800; margin-bottom: 8px; line-height: 1.4; }
+    .xh-notice-text { font-size: 14px; line-height: 1.7; color: #64748b; margin-bottom: 14px; }
+    .xh-notice-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; list-style: none; }
+    .xh-notice-list li { padding: 5px 12px; border-radius: 999px; background: #eff6ff; color: #2563eb; font-size: 13px; font-weight: 700; }
+    .xh-notice-btn {
+      width: 100%; padding: 12px 16px; border: 0; border-radius: 10px; cursor: pointer;
+      background: #2563eb; color: #fff; font: inherit; font-size: 15px; font-weight: 700; transition: background .2s;
+    }
+    .xh-notice-btn:hover { background: #1d4ed8; }
+    .xh-notice-btn:focus-visible { outline: 3px solid rgba(37, 99, 235, .35); outline-offset: 2px; }
+
+    @keyframes xhFade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes xhPop { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
+    @keyframes xhBounce { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(5px, -7px); } }
+    @media (prefers-reduced-motion: reduce) {
+      .xh-block-card, .xh-notice, .xh-notice-card, .xh-block-arrow { animation: none !important; }
+      .xh-notice { transition: none; }
+    }
+    @media (max-width: 480px) {
+      .xh-block { padding: 16px; align-items: flex-start; }
+      .xh-block-card { padding: 26px 18px 20px; margin-top: 56px; }
+      .xh-block-title { font-size: 20px; }
+    }
+  </style>
+  <script id="xh-browser-guard">
+  (function () {
+    'use strict';
+    var NOTICE_KEY = 'xh_browser_notice_dismissed';
+
+    function getUA() { return (navigator && navigator.userAgent) || ''; }
+
+    // 1) 微信 / QQ 内置网页环境（优先级最高，先于任何独立浏览器判断）
+    //    微信：iOS / Android / Windows / macOS 均带 MicroMessenger（桌面版另带 WindowsWechat / MacWechat）
+    //    QQ：手机 QQ / 桌面 QQ 带独立的 "QQ/版本号" 标记，或 V1_AND_SQ / V1_IPH_SQ 客户端标识
+    //    注意：独立的「QQ 浏览器」只含 MQQBrowser / QQBrowser，不含 "QQ/"，不会被误判为 QQ 内置环境
+    function isEmbeddedBrowser(ua) {
+      ua = ua || getUA();
+      if (/MicroMessenger|WindowsWechat|MacWechat/i.test(ua)) return 'wechat';
+      if (/(?:^|[\s;(])QQ\/\d/.test(ua) || /V1_(?:AND|IPH)_SQ/.test(ua)) return 'qq';
+      return null;
+    }
+
+    // 2) 独立的非主流 / 兼容性可能有差异的浏览器（只提示，不拦截）
+    var STANDALONE = [
+      ['QQ 浏览器', /MQQBrowser|QQBrowser/i],
+      ['360 浏览器', /360SE|360EE|360Browser|QIHU|Qihoo/i],
+      ['UC 浏览器', /UCBrowser|UCWEB/i],
+      ['夸克浏览器', /Quark\//i],
+      ['搜狗浏览器', /SogouMobileBrowser|MetaSr|SE 2\.X/i],
+      ['2345 浏览器', /2345Explorer|2345Browser|Mb2345Browser/i],
+      ['猎豹浏览器', /LBBROWSER|LieBao/i],
+      ['傲游浏览器', /Maxthon|MxBrowser/i],
+      ['百度浏览器', /BIDUBrowser|baidubrowser|BaiduHD/i]
+    ];
+
+    // 返回 { kind: 'embedded' | 'standalone' | 'mainstream' | 'other' | 'unknown', name }
+    // 识别顺序：内置环境 -> 独立浏览器 -> Edge -> Firefox -> Opera -> Chrome -> Safari
+    // （Edge 的 UA 也含 Chrome、Chrome 的 UA 也含 Safari，所以必须按此顺序）
+    // iOS 上的 Chrome(CriOS) / Edge(EdgiOS) / Firefox(FxiOS) 靠各自专属标记识别，不会被当作 Safari
+    function detectBrowser(ua) {
+      ua = ua || getUA();
+      var emb = isEmbeddedBrowser(ua);
+      if (emb) return { kind: 'embedded', name: emb };
+      for (var i = 0; i < STANDALONE.length; i++) {
+        if (STANDALONE[i][1].test(ua)) return { kind: 'standalone', name: STANDALONE[i][0] };
+      }
+      if (/Edg(?:e|A|iOS)?\//.test(ua)) return { kind: 'mainstream', name: 'Edge' };
+      if (/Firefox\/|FxiOS\//.test(ua)) return { kind: 'mainstream', name: 'Firefox' };
+      if (/OPR\/|OPiOS\/|Opera/.test(ua)) return { kind: 'other', name: 'Opera' };
+      if (/Chrome\/|CriOS\//.test(ua)) return { kind: 'mainstream', name: 'Chrome' };
+      if (/Safari\//.test(ua)) return { kind: 'mainstream', name: 'Safari' };
+      return { kind: 'unknown', name: '' };   // 无法判断：默认放行
+    }
+
+    // 3) 推荐弹窗（只提示，不拦截；本次会话关闭后不再弹出）
+    function showBrowserNotice() {
+      try { if (sessionStorage.getItem(NOTICE_KEY) === '1') return; } catch (e) {}
+      if (document.getElementById('xhNotice')) return;
+
+      var wrap = document.createElement('div');
+      wrap.id = 'xhNotice';
+      wrap.className = 'xh-notice';
+      wrap.setAttribute('role', 'dialog');
+      wrap.setAttribute('aria-modal', 'true');
+      wrap.setAttribute('aria-labelledby', 'xhNoticeTitle');
+      wrap.innerHTML =
+        '<div class="xh-notice-card">' +
+          '<h2 class="xh-notice-title" id="xhNoticeTitle">推荐使用主流浏览器访问</h2>' +
+          '<p class="xh-notice-text">检测到你当前使用的浏览器可能存在兼容性差异。为了获得更稳定、流畅的访问体验，建议使用以下浏览器访问本站。</p>' +
+          '<ul class="xh-notice-list"><li>Google Chrome</li><li>Microsoft Edge</li><li>Mozilla Firefox</li></ul>' +
+          '<button type="button" class="xh-notice-btn">我知道了，继续访问</button>' +
+        '</div>';
+      document.body.appendChild(wrap);
+
+      var btn = wrap.querySelector('.xh-notice-btn');
+      var prevFocus = document.activeElement;
+      function onKey(e) { if (e.key === 'Escape') close(); }
+      function close() {
+        try { sessionStorage.setItem(NOTICE_KEY, '1'); } catch (e) {}
+        document.removeEventListener('keydown', onKey);
+        wrap.classList.add('xh-out');
+        setTimeout(function () { if (wrap.parentNode) wrap.parentNode.removeChild(wrap); }, 220);
+        if (prevFocus && prevFocus.focus) { try { prevFocus.focus(); } catch (e) {} }
+      }
+      btn.addEventListener('click', close);
+      document.addEventListener('keydown', onKey);
+      btn.focus();
+    }
+
+    var result = detectBrowser();
+    // 微信 / QQ 内置：立即标记，原有业务脚本检测到该标记后不再初始化
+    window.__XH_BLOCKED = result.kind === 'embedded';
+    if (window.__XH_BLOCKED) document.documentElement.classList.add('xh-blocked');
+
+    function init() {
+      if (window.__XH_BLOCKED) return;
+      if (result.kind === 'standalone') showBrowserNotice();
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+
+    window.XHBrowser = { detectBrowser: detectBrowser, isEmbeddedBrowser: isEmbeddedBrowser, showBrowserNotice: showBrowserNotice };
+  })();
+  </script>
+  <!-- ===== /浏览器识别 ===== -->
+
   <style>
     :root {
       --bg-main: #f8fafc;
@@ -571,6 +760,25 @@
 </head>
 <body>
 
+  <!-- 微信 / QQ 内置浏览器拦截页：默认隐藏，仅在被拦截时显示（不可点击解除）-->
+  <div id="xhBlock" class="xh-block" role="dialog" aria-modal="true" aria-labelledby="xhBlockTitle">
+    <div class="xh-block-arrow" aria-hidden="true">
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 42 42 14"/><path d="M20 14h22v22"/></svg>
+    </div>
+    <div class="xh-block-card">
+      <div class="xh-block-icon" aria-hidden="true">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg>
+      </div>
+      <h1 class="xh-block-title" id="xhBlockTitle">请使用系统浏览器打开</h1>
+      <p class="xh-block-text">检测到你正在微信或 QQ 内置浏览器中访问本站，为了获得正常的访问体验，请切换到系统浏览器打开。</p>
+      <ol class="xh-block-steps">
+        <li><span class="xh-block-num">1</span><div>第一步：点击页面右上角「<span class="xh-block-dots">···</span>」菜单。</div></li>
+        <li><span class="xh-block-num">2</span><div>第二步：选择「在默认浏览器中打开」或「在浏览器中打开」。</div></li>
+      </ol>
+      <div class="xh-block-rec">推荐浏览器：<b>Chrome</b>、<b>Microsoft Edge</b>、<b>Firefox</b></div>
+    </div>
+  </div>
+
   <header class="header">
     <a href="#" class="brand">新华云</a>
     <div class="brand-sub">官方最新地址发布页</div>
@@ -654,6 +862,9 @@
             </div>
           </div>
         </section>
+    
+        <!-- 设备推荐卡片（由 JS 根据访问设备填充内容）-->
+        <section class="xh-device-card" id="xhDeviceCard" aria-label="设备推荐" hidden></section>
     </aside>
 
   </main>
@@ -662,6 +873,7 @@
     const NEW_SITE_URL = "https://go.xhyjs.cc";
 
     document.addEventListener("DOMContentLoaded", () => {
+      if (window.__XH_BLOCKED) return; // 微信/QQ 内置浏览器：不初始化
       const newBtn = document.getElementById("newSiteBtn");
 
       if (newBtn) newBtn.href = NEW_SITE_URL;
@@ -741,6 +953,109 @@
       }
     }
   </script>
+
+  <!-- ===== 设备识别与客户端推荐 ===== -->
+  <style id="xh-device-css">
+    .xh-device-card { margin-top: 16px; background: var(--bg-card, #fff); border: 1px solid var(--border-color, #e2e8f0); border-radius: 12px; padding: 20px; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,.05)); }
+    .xh-device-card[hidden] { display: none; }
+    .xh-device-title { font-size: 15px; font-weight: 800; line-height: 1.5; color: var(--text-main, #0f172a); }
+    .xh-device-client { margin-top: 10px; font-size: 14px; color: var(--text-muted, #64748b); }
+    .xh-device-client strong { display: inline-block; margin-left: 2px; padding: 1px 10px; border-radius: 6px; background: var(--primary-light, #eff6ff); color: var(--primary, #2563eb); font-weight: 800; }
+    .xh-device-desc { margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--text-muted, #64748b); }
+    .xh-device-link { display: inline-flex; align-items: center; margin-top: 14px; padding: 9px 16px; border-radius: 8px; background: var(--primary, #2563eb); color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .2s; }
+    .xh-device-link:hover { background: var(--primary-hover, #1d4ed8); }
+    /* 宽屏侧栏加了一张卡片后更高：视口较矮时让侧栏自身可滚动，避免被截断 */
+    @media (min-width: 1760px) {
+      .promo-side { max-height: calc(100vh - 124px); overflow-y: auto; scrollbar-width: thin; }
+    }
+  </style>
+  <script id="xh-device-recommend">
+  (function () {
+    'use strict';
+    if (window.__XH_BLOCKED) return; // 微信/QQ 内置浏览器：不初始化
+
+    // ===== 配置区：修改各平台推荐的客户端 / 教程链接，只改这里 =====
+    var XH_TUTORIAL_URL = 'https://help.xhyjs.de/';          // 统一教程地址（各平台可单独覆盖 url）
+    var XH_LINK_TEXT = '查看安装与使用教程 →';
+    var XH_DESC = '客户端安装、导入订阅与使用方法，教程中都有详细说明。';
+    var XH_DEVICES = {
+      ios:     { icon: '📱', label: 'iOS',     client: 'Shadowrocket（小火箭）', url: XH_TUTORIAL_URL },
+      android: { icon: '📱', label: 'Android', client: 'Karing',                 url: XH_TUTORIAL_URL },
+      windows: { icon: '💻', label: 'Windows', client: 'Karing',                 url: XH_TUTORIAL_URL },
+      macos:   { icon: '💻', label: 'macOS',   client: 'Shadowrocket（小火箭）', url: XH_TUTORIAL_URL }
+    };
+    var XH_DEVICE_FALLBACK = { icon: '💡', title: '识别到你正在使用其他设备，点击下方教程了解使用方法', url: XH_TUTORIAL_URL };
+    // ===============================================================
+
+    // 返回 'ios' | 'android' | 'windows' | 'macos' | null（无法可靠识别）
+    function detectPlatform() {
+      var nav = navigator, ua = nav.userAgent || '', plat = nav.platform || '', touch = nav.maxTouchPoints || 0;
+
+      // 1) 优先使用 Client Hints（Chromium 系浏览器）
+      var dp = nav.userAgentData && nav.userAgentData.platform ? String(nav.userAgentData.platform) : '';
+      if (/^android$/i.test(dp)) return 'android';
+      if (/^windows$/i.test(dp)) return 'windows';
+      if (/^macos$/i.test(dp)) return 'macos';
+
+      // 2) User-Agent
+      if (/iPhone|iPod|iPad/.test(ua)) return 'ios';
+      if (/Android/.test(ua)) return 'android';
+      if (/Windows Phone/.test(ua)) return null;
+      if (/Windows NT|Win64|Win32|WOW64/.test(ua) || /^Win/.test(plat)) return 'windows';
+
+      // 3) iPadOS 默认请求桌面网站时 UA 与 Mac 相同，用触点数区分（Mac 通常为 0，iPad 为 5）
+      if (/Macintosh|Mac OS X/.test(ua) || /^Mac/.test(plat)) return touch > 1 ? 'ios' : 'macos';
+
+      // 4) Android 浏览器「桌面版网站」模式：UA 为 Linux，但 platform 为 arm 且有触屏
+      if (/^Linux (?:arm|aarch)/i.test(plat) && touch > 1) return 'android';
+      return null;
+    }
+
+    function render() {
+      var card = document.getElementById('xhDeviceCard');
+      if (!card) return;
+      var key = detectPlatform(), cfg = key ? XH_DEVICES[key] : null;
+      var url = cfg ? cfg.url : XH_DEVICE_FALLBACK.url;
+
+      card.textContent = '';
+      var title = document.createElement('div');
+      title.className = 'xh-device-title';
+      title.textContent = cfg ? cfg.icon + ' 检测到你当前使用的是 ' + cfg.label + ' 设备'
+                              : XH_DEVICE_FALLBACK.icon + ' ' + XH_DEVICE_FALLBACK.title;
+      card.appendChild(title);
+
+      if (cfg) {
+        var client = document.createElement('div');
+        client.className = 'xh-device-client';
+        client.appendChild(document.createTextNode('推荐客户端：'));
+        var name = document.createElement('strong');
+        name.textContent = cfg.client;
+        client.appendChild(name);
+        card.appendChild(client);
+
+        var desc = document.createElement('p');
+        desc.className = 'xh-device-desc';
+        desc.textContent = XH_DESC;
+        card.appendChild(desc);
+      }
+
+      var a = document.createElement('a');
+      a.className = 'xh-device-link';
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.textContent = XH_LINK_TEXT;
+      card.appendChild(a);
+      card.hidden = false;
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render);
+    else render();
+
+    window.XHDevice = { detectPlatform: detectPlatform };
+  })();
+  </script>
+  <!-- ===== /设备识别 ===== -->
 
   <!-- 客服与帮助：打字机助手模块（整段粘贴到 Crisp 配置注释之前） -->
 <style>
@@ -829,6 +1144,7 @@
 
 <script>
 (function () {
+  if (window.__XH_BLOCKED) return; // 微信/QQ 内置浏览器：不初始化客服助手
   // 块类型：t=打字文本(第3项: h标题/m强调/g日志)  k=标签+示例  c=✓日志项  b=聊天气泡
   var S = [
     [['t','💬 需要帮助？','h'],['t','点击右下角客服图标即可联系客服。'],['t','有问题请直接描述即可，\n无需发送「你好」「在吗」等寒暄消息。'],['t','提供的信息越完整，\n我们解决问题的速度就越快。','m']],
@@ -981,6 +1297,7 @@
     window.$crisp = [];
     window.CRISP_WEBSITE_ID = "bac83da9-488b-4c0c-956b-4059891eb205";
     (function () {
+      if (window.__XH_BLOCKED) return; // 微信/QQ 内置浏览器：不加载 Crisp
       const d = document;
       const s = d.createElement("script");
       s.src = "https://client.crisp.chat/l.js";
