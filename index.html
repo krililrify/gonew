@@ -975,14 +975,14 @@
     if (window.__XH_BLOCKED) return; // 微信/QQ 内置浏览器：不初始化
 
     // ===== 配置区：修改各平台推荐的客户端 / 教程链接，只改这里 =====
-    var XH_TUTORIAL_URL = 'https://help.xhyjs.de/';          // 统一教程地址（各平台可单独覆盖 url）
+    var XH_TUTORIAL_URL = 'https://help.xhyjs.de/';          // 通用教程地址（无法识别设备时使用；各平台在下方单独设置 url）
     var XH_LINK_TEXT = '查看安装与使用教程 →';
     var XH_DESC = '客户端安装、导入订阅与使用方法，教程中都有详细说明。';
     var XH_DEVICES = {
-      ios:     { icon: '📱', label: 'iOS',     client: 'Shadowrocket（小火箭）', url: XH_TUTORIAL_URL },
-      android: { icon: '📱', label: 'Android', client: 'Karing',                 url: XH_TUTORIAL_URL },
-      windows: { icon: '💻', label: 'Windows', client: 'Karing',                 url: XH_TUTORIAL_URL },
-      macos:   { icon: '💻', label: 'macOS',   client: 'Shadowrocket（小火箭）', url: XH_TUTORIAL_URL }
+      ios:     { icon: '📱', label: 'iOS',     client: 'Shadowrocket（小火箭）', url: 'https://url.mimy.cc/karing-ios' },
+      android: { icon: '📱', label: 'Android', client: 'Karing',                 url: 'https://url.mimy.cc/karing-android' },
+      windows: { icon: '💻', label: 'Windows', client: 'Karing',                 url: 'https://url.mimy.cc/karing-windows' },
+      macos:   { icon: '💻', label: 'macOS',   client: 'Shadowrocket（小火箭）', url: 'https://url.mimy.cc/karing-mac' }
     };
     var XH_DEVICE_FALLBACK = { icon: '💡', title: '识别到你正在使用其他设备，点击下方教程了解使用方法', url: XH_TUTORIAL_URL };
     // ===============================================================
